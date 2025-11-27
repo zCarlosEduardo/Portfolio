@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import Sobre from "@/components/Sobre";
 import { TechCarrosel } from "@/components/TechCarrosel";
 import Projetos from "@/components/Projetos";
+import Contato from "@/components/Contato";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <TechCarrosel />
       </div>
       <Projetos />
+      <Contato />
     </div>
   );
 }
