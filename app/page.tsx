@@ -6,14 +6,14 @@ import Contato from "@/components/Contato";
 
 export default function Home() {
   return (
-    <div>
-      <div  className="container mx-auto">
-      <Hero />
-      <Sobre />
-      <TechCarrosel />
+    <main itemScope itemType="https://schema.org/WebPage">
+      <div className="container mx-auto">
+        <Hero />
+        <Sobre />
+        <TechCarrosel />
       </div>
       <Projetos />
       <Contato />
-    </div>
+    </main>
   );
 }
