@@ -11,12 +11,12 @@
   --texto-code-font: 'Fira Code', monospace;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #0f172a;
     --foreground: #ededed;
   }
-} */
+}
 
 body {
   background: var(--background);

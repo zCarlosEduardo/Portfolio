@@ -17,14 +17,14 @@ export function TechCarrosel(){
         [Autoplay({ delay: 3000, stopOnInteraction: false })]
     );
 
-    const duplicaTech = [...tecnologias, ...tecnologias, ...tecnologias, ...tecnologias, ...tecnologias];
+    const duplicaTech = [...tecnologias, ...tecnologias, ...tecnologias, ...tecnologias, ...tecnologias, ...tecnologias, ...tecnologias, ...tecnologias, ...tecnologias];
 
     return (
         <div className='my-16'>
             <div className='text-center'>
             <h2 className='text-2xl'>Ferramentas & Tecnologias</h2>
             </div>
-        <div className='overflow-hidden max-w-5xl mx-auto' ref={emblaRef}>
+        <div className='overflow-hidden max-w-90 md:max-w-5xl mx-auto' ref={emblaRef}>
             <div className='flex gap-6 py-10 ' >
                 {duplicaTech.map((tech, index) => (
                     <div key={index} className='flex-[0_0_auto]'>

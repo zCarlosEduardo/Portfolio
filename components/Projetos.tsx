@@ -5,7 +5,7 @@ import { SiGithub } from "react-icons/si";
 
 function Projetos() {
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
+    <div id="Projetos" className="min-h-screen bg-linear-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
       
       <div className="container mx-auto py-20 px-4 md:px-8 flex flex-col gap-16 items-center relative z-10">
         {/* Header da seção */}
@@ -37,8 +37,8 @@ function Projetos() {
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-3 px-8 py-4 bg-gray-900 hover:bg-gray-950 text-white rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-gray-700/50"
           >
-            <SiGithub size={24} className="group-hover/btn:rotate-12 transition-transform duration-300" />
-            <span>Ver mais repositórios no GitHub</span>
+            <SiGithub size={24} className="group-hover/btn:rotate-24 transition-transform duration-300" />
+            <span className="flex flex-row flex-nowrap">Ver mais repositórios <span className="hidden md:block">no GitHub</span></span>
             <svg
               className="w-5 h-5 group-hover:translate-x-1 transition-transform"
               fill="none"
