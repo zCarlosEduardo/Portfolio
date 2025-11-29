@@ -2,18 +2,42 @@
 
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsVisible(true);
+
+    // Intersection Observer para detectar quando a seção está visível
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.3, // Ativa quando 30% da seção está visível
+        rootMargin: "0px",
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
   return (
     <section 
+      ref={sectionRef}
       className="mt-24 flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-12 min-h-[calc(100vh-16em)]"
       itemScope
       itemType="https://schema.org/Person"
@@ -35,23 +59,25 @@ function Hero() {
             >
               Carlos Eduardo <span className="hidden md:block">Alonso</span>
             </h1>
-            <TypeAnimation
-              sequence={[
-                "Desenvolvedor Full Stack Júnior",
-                5000,
-                "Criando experiências web incríveis",
-                3000,
-                "Especialista em React e Next.js",
-                3000,
-                "Desenvolvedor Frontend e Backend",
-                3000,
-              ]}
-              wrapper="span"
-              speed={50}
-              className="text-2xl text-blue-800 ml-0 md:ml-12 font-medium dark:text-blue-500"
-              repeat={Infinity}
-              aria-label="Especialidades profissionais"
-            />
+            {isInView && (
+              <TypeAnimation
+                sequence={[
+                  "Desenvolvedor Full Stack Júnior",
+                  5000,
+                  "Criando experiências web incríveis",
+                  3000,
+                  "Especialista em React e Next.js",
+                  3000,
+                  "Desenvolvedor Frontend e Backend",
+                  3000,
+                ]}
+                wrapper="span"
+                speed={50}
+                className="text-2xl text-blue-800 ml-0 md:ml-12 font-medium dark:text-blue-500"
+                repeat={Infinity}
+                aria-label="Especialidades profissionais"
+              />
+            )}
           </div>
 
           {/* Descrição e CTA */}
