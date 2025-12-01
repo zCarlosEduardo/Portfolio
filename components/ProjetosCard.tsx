@@ -10,7 +10,7 @@ interface ProjetosCardProps {
 
 export function ProjetosCard({ projeto, highlight }: ProjetosCardProps) {
   return (
-    <article 
+    <article
       className="group relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-500 flex flex-col h-full border border-slate-700/50 hover:border-blue-500/50 shadow-2xl hover:shadow-blue-500/20"
       itemScope
       itemType="https://schema.org/CreativeWork"
@@ -31,7 +31,8 @@ export function ProjetosCard({ projeto, highlight }: ProjetosCardProps) {
             sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
             loading="lazy"
           />
-        ) : typeof projeto.icon === "string" && projeto.icon.startsWith("http") ? (
+        ) : typeof projeto.icon === "string" &&
+          projeto.icon.startsWith("http") ? (
           <Image
             src={projeto.icon}
             alt={`Logo do projeto ${projeto.titulo}`}
@@ -41,7 +42,7 @@ export function ProjetosCard({ projeto, highlight }: ProjetosCardProps) {
             itemProp="image"
           />
         ) : (
-          <span 
+          <span
             className="text-7xl drop-shadow-2xl group-hover:scale-110 transition-transform duration-500"
             aria-label="Ícone do projeto"
           >
@@ -56,7 +57,7 @@ export function ProjetosCard({ projeto, highlight }: ProjetosCardProps) {
       {/* Conteúdo */}
       <div className="relative p-6 flex flex-col grow">
         {/* Título */}
-        <h3 
+        <h3
           className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300"
           itemProp="name"
         >
@@ -64,7 +65,7 @@ export function ProjetosCard({ projeto, highlight }: ProjetosCardProps) {
         </h3>
 
         {/* Descrição */}
-        <p 
+        <p
           className="text-slate-300 mb-5 leading-relaxed grow"
           itemProp="description"
         >
@@ -72,7 +73,10 @@ export function ProjetosCard({ projeto, highlight }: ProjetosCardProps) {
         </p>
 
         {/* Tecnologias */}
-        <div className="flex flex-wrap gap-2 mb-6" aria-label="Tecnologias utilizadas">
+        <div
+          className="flex flex-wrap gap-2 mb-6"
+          aria-label="Tecnologias utilizadas"
+        >
           {projeto.tecnologias.map((tech, index) => (
             <span
               key={index}

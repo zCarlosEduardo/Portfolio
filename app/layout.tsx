@@ -19,13 +19,13 @@ const geistFira = Fira_Code({
 export const metadata: Metadata = {
   metadataBase: new URL("https://seusite.com.br"), // Altere para seu domínio
   title: {
-    default: "Carlos Eduardo Alonso | Desenvolvedor Full Stack",
+    default: "Carlos Edu | Desenvolvedor Full Stack",
     template: "%s | Carlos Eduardo Alonso",
   },
   description:
     "Portfólio de Carlos Eduardo de Souza Alonso - Desenvolvedor Full Stack Júnior especializado em Next.js, React, TypeScript e desenvolvimento de aplicações web modernas e responsivas.",
   keywords: [
-    "Carlos Eduardo Alonso",
+    "Carlos Eduardo de Souza Alonso",
     "desenvolvedor full stack",
     "desenvolvedor full stack júnior",
     "desenvolvedor web",
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
     "sites responsivos",
   ],
   authors: [{ name: "Carlos Eduardo de Souza Alonso" }],
-  creator: "Carlos Eduardo Alonso",
-  publisher: "Carlos Eduardo Alonso",
+  creator: "Carlos Eduardo de Souza Alonso",
+  publisher: "Carlos Eduardo de Souza Alonso",
   robots: {
     index: true,
     follow: true,
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://seusite.com.br",
-    siteName: "Carlos Eduardo Alonso - Portfólio",
-    title: "Carlos Eduardo Alonso | Desenvolvedor Full Stack",
+    url: "https://ceduardo.com.br",
+    siteName: "Carlos Eduardo de Souza Alonso - Portfólio",
+    title: "Carlos Edu | Desenvolvedor Full Stack",
     description:
       "Desenvolvedor Full Stack especializado em Next.js, React e TypeScript. Criando experiências web modernas e de alta performance.",
     images: [
@@ -88,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="scroll-smooth">
       <head>
-        <link rel="canonical" href="https://seusite.com.br" />
+        <link rel="canonical" href="https://ceduardo.com.br" />
       </head>
       <body
         className={`${geistInter.variable} ${geistFira.variable} antialiased`}

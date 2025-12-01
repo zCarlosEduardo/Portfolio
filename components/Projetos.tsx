@@ -34,16 +34,18 @@ function Projetos() {
   }, []);
 
   return (
-    <div 
-      id="Projetos" 
+    <div
+      id="Projetos"
       ref={sectionRef}
       className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden"
     >
       <div className="container mx-auto py-20 px-4 md:px-8 flex flex-col gap-16 items-center relative z-10">
         {/* Header da seção com Animação */}
-        <div 
+        <div
           className={`text-center flex flex-col gap-4 max-w-3xl transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+            isVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-10"
           }`}
         >
           <span className="text-gray-200 text-sm font-semibold tracking-widest uppercase">
@@ -53,9 +55,9 @@ function Projetos() {
             Projetos em Destaque
           </h2>
           <p className="text-gray-300 text-lg">
-            Conheça alguns dos <strong>projetos web modernos</strong> que desenvolvi 
-            com <strong>React</strong>, <strong>Next.js</strong> e as melhores 
-            práticas de <strong>desenvolvimento frontend</strong>
+            Explore uma seleção dos meus <strong>projetos web</strong>. Cada
+            projeto reflete dedicação à inovação, performance e experiência do
+            usuário.
           </p>
         </div>
 
@@ -65,8 +67,8 @@ function Projetos() {
             <div
               key={index}
               className={`transition-all duration-700 ${
-                isVisible 
-                  ? "opacity-100 translate-y-0" 
+                isVisible
+                  ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
@@ -77,7 +79,7 @@ function Projetos() {
         </div>
 
         {/* Botão para ver mais no GitHub com Animação */}
-        <div 
+        <div
           className={`mt-8 transition-all duration-1000 delay-500 ${
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
           }`}
@@ -89,12 +91,12 @@ function Projetos() {
             className="group inline-flex items-center gap-3 px-8 py-4 bg-gray-900 hover:bg-gray-950 text-white rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-gray-700/50"
             aria-label="Ver mais repositórios no GitHub de Carlos Eduardo"
           >
-            <SiGithub 
-              size={24} 
-              className="group-hover:rotate-12 transition-transform duration-300" 
+            <SiGithub
+              size={24}
+              className="group-hover:rotate-12 transition-transform duration-300"
             />
             <span className="flex flex-row flex-nowrap gap-1">
-              Ver mais repositórios 
+              Ver mais repositórios
               <span className="hidden md:block">no GitHub</span>
             </span>
             <svg
@@ -103,11 +105,11 @@ function Projetos() {
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M17 8l4 4m0 0l-4 4m4-4H3" 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
           </a>

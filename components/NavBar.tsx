@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { TypeAnimation } from "react-type-animation";
 
 function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,14 +11,11 @@ function NavBar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Mostra navbar se subir ou está no topo
       if (currentScrollY < lastScrollY || currentScrollY < 10) {
         setIsVisible(true);
-      }
-      // Esconde navbar se descer
-      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false);
-        setIsMenuOpen(false); // Fecha o menu ao esconder
+        setIsMenuOpen(false);
       }
 
       setLastScrollY(currentScrollY);
@@ -53,7 +49,7 @@ function NavBar() {
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
-                <button
+        <button
           onClick={() => scrollToSection("#")}
           className="text-xl font-bold text-gray-800 dark:text-white"
         >
@@ -62,9 +58,7 @@ function NavBar() {
         <button
           onClick={() => scrollToSection("#")}
           className="text-xl font-bold text-gray-800 dark:text-white block md:hidden"
-        >
-
-        </button>
+        ></button>
 
         {/* Menu Desktop */}
         <ul className="hidden md:flex space-x-4">

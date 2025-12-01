@@ -21,7 +21,7 @@ export function TechCard({ technologia }: TechnologiaCardProps) {
         className="w-20 h-20 mb-4 flex items-center justify-center text-white text-6xl"
         aria-label={`Ícone da tecnologia ${technologia.name}`}
       >
-        {typeof Icon === 'function' ? <Icon /> : Icon}
+        {typeof Icon === "function" ? <Icon /> : Icon}
       </div>
       <span
         className="text-white font-semibold text-center text-sm bg-white/10 px-2 py-1 rounded backdrop-blur-sm"

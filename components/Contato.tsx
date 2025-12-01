@@ -72,9 +72,7 @@ function Contato() {
         {/* WhatsApp */}
         <div
           className={`md:mt-8 md:w-52 transition-all duration-1000 delay-500 ${
-            isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <a
@@ -96,9 +94,7 @@ function Contato() {
         {/* LinkedIn */}
         <div
           className={`md:mt-8 md:w-52 transition-all duration-1000 delay-700 ${
-            isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <a
@@ -120,9 +116,7 @@ function Contato() {
         {/* GitHub */}
         <div
           className={`md:mt-8 md:w-52 transition-all duration-1000 delay-900 ${
-            isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <a
