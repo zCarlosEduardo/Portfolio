@@ -10,6 +10,7 @@ function Hero() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsVisible(true);
 
     const observer = new IntersectionObserver(
@@ -32,6 +33,18 @@ function Hero() {
       }
     };
   }, []);
+
+    const scrollToSection = (sectionId: string) => {
+    if (sectionId === "#") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
 
   return (
     <section
@@ -106,15 +119,13 @@ function Hero() {
               aplicações web.
             </p>
 
-            <a
-              href="#Projetos"
-              className="py-3 px-12 bg-blue-800 hover:bg-blue-900 rounded-md
-               text-white font-medium transition-all duration-300 shadow-md
-                hover:shadow-lg hover:scale-105 inline-block"
+            <button
+              onClick={() => scrollToSection("Projetos")}
+              className="py-3 px-12 bg-blue-800 hover:bg-blue-900 rounded-md text-white font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 inline-block"
               aria-label="Navegar para seção de projetos"
             >
               Ver Projetos
-            </a>
+            </button>
           </div>
         </div>
       </div>

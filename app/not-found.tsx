@@ -7,7 +7,7 @@ export default function NotFound() {
     <div
       className="min-h-screen flex items-center justify-center"
       style={{
-        backgroundImage: 'url("/background-404.png")',
+        backgroundImage: 'url("/background-404.webp")',
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -17,7 +17,7 @@ export default function NotFound() {
           {/* Ícone animado */}
           <div className="flex justify-center mb-6">
             <Image
-              src="/404Error.png"
+              src="/404Error.webp"
               alt="Erro 404"
               width={960}
               height={960}
