@@ -17,10 +17,10 @@ export const projetos: Projeto[] = [
     tecnologias: ["Next.js", "PostgreSQL", "Prisma", "Tailwind CSS", "Docker"]
   },
   {
-    icon: "https://black.ancore.app/IconHome.svg",
+    icon: "🚘",
     titulo: "Black Ancore",
     descricao: "Landing page promocional desenvolvida para campanha de Black Friday. Design moderno, responsivo e otimizado para alta conversão de visitantes em leads.",
-    link: "https://black.ancore.app",
+    link: "", // https://black.ancore.app
     github: "https://github.com/zCarlosEduardo/black-ancore",
     tecnologias: ["Next.js", "Docker", "Tailwind CSS"]
   },
