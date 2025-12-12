@@ -102,6 +102,7 @@ function Hero() {
                 speed={50}
                 className="text-2xl text-blue-800 ml-0 md:ml-12 font-medium dark:text-blue-500"
                 repeat={Infinity}
+                role="heading"
                 aria-label="Especialidades profissionais"
               />
             )}

@@ -18,9 +18,7 @@ export function TechCard({ technologia }: TechnologiaCardProps) {
       itemType="https://schema.org/SoftwareApplication"
     >
       <div
-        className="w-20 h-20 mb-4 flex items-center justify-center text-white text-6xl"
-        aria-label={`Ícone da tecnologia ${technologia.name}`}
-      >
+        className="w-20 h-20 mb-4 flex items-center justify-center text-white text-6xl">
         {typeof Icon === "function" ? <Icon /> : Icon}
       </div>
       <span
