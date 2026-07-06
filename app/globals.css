@@ -7,6 +7,28 @@
   mask-image: radial-gradient(ellipse 90% 65% at 45% 42%, black 0%, transparent 68%);
 }
 
+@keyframes piscar { 50% { opacity: 0; } }
+.cursor-piscante { animation: piscar 1s steps(1) infinite; }
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+
 :root {
     --background: #0a0a0a;
     --foreground: #ededed;
