@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-export default function TopBar() {
-  const menuItems = [
-    { label: "projetos", href: "#projetos" },
-    { label: "processo", href: "#processo" },
-    { label: "experiência", href: "#experiencia" },
-    { label: "skills", href: "#skills" },
-  ];
+const LINKS = [
+  { id: "projetos", label: "projetos" },
+  { id: "processo", label: "processo" },
+  { id: "experiencia", label: "experiência" },
+  { id: "skills", label: "skills" },
+];
 
+export default function TopBar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -24,6 +24,11 @@ export default function TopBar() {
     };
   }, []);
 
+  function irPara(e: React.MouseEvent<HTMLAnchorElement>, id: string) {
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <header
       className={`
@@ -33,7 +38,7 @@ export default function TopBar() {
         ${scrolled ? "border-b border-stone-800 bg-(--background)/50 backdrop-blur" : "border-stone-950"}
       `}
     >
-      <div className="flex text-sm text-center items-center container mx-auto py-4 px-6 md:px-0 justify-between">
+      <div className="flex text-sm text-center items-center container mx-auto py-4 px-6 lg:px-6 justify-between">
         <h2 className="font-bold flex gap-2">
           ce
           <span className="font-normal text-(--cor-secundaria)">.dev</span>
@@ -41,18 +46,22 @@ export default function TopBar() {
 
         <div className="flex gap-6 text-center items-center">
           <nav className="hidden md:flex gap-6 font-extralight text-(--cor-secundaria)">
-            {menuItems.map((item) => (
+            {LINKS.map((item) => (
               <a
-                key={item.label}
-                href={item.href}
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => irPara(e, item.id)}
                 className="transition-colors duration-300 hover:text-(--cor-primaria)"
               >
                 {item.label}
               </a>
             ))}
           </nav>
-
-          <a className="px-6 py-1.5 border rounded-full border-stone-800 text-sm cursor-pointer hover:bg-(--cor-primaria) hover:text-(--background) transition-colors duration-300 ">
+          <a
+            href="#contato"
+            onClick={(e) => irPara(e, "contato")}
+            className="px-6 py-1.5 border rounded-full border-stone-800 text-sm cursor-pointer hover:bg-(--cor-primaria) hover:text-(--background) transition-colors duration-300 "
+          >
             Vamos conversar
           </a>
         </div>
