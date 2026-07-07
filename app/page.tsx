@@ -1,4 +1,5 @@
 import CardsDadosTerminal from "@/components/CardsDadosTerminal";
+import Formacoes from "@/components/Formacoes";
 import MarqueeTecnologias from "@/components/MarqueeTecnologias";
 import ParticleCanvas from "@/components/ParticleCanvas";
 import TituloSections from "@/components/TituloSections";
@@ -87,21 +88,7 @@ export default function Home() {
           <h4 className="text-xs text-(--cor-secundaria) tracking-wide uppercase ml-3 my-3 font-mono">
             Formação
           </h4>
-          <div>
-            <div className="flex gap-2 justify-between border-y border-0 border-neutral-900 py-4 flex-wrap">
-              <span className="ml-3">Ciência da Computação — em andamento</span>
-              <span className="text-(--cor-secundaria) text-sm tracking-wide font-mono">
-                {" "}
-                Descomplica Faculdade Digital
-              </span>
-            </div>
-            <div className="flex gap-2 justify-between border-b border-0 border-neutral-900 py-4 flex-wrap">
-              <span className="ml-3">Formações em desenvolvimento web</span>
-              <span className="text-(--cor-secundaria) text-sm tracking-wide font-mono">
-                Alura · Codédex
-              </span>
-            </div>
-          </div>
+          <Formacoes/>
         </div>
         <div id="contato" className="pt-20"></div>
       </div>
