@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 
 type Linha = { texto: string; digitada: boolean; cor?: string };
 
-// Fora do componente: referência estável, não recria a cada render
 const ROTEIRO: Linha[] = [
   { texto: "$ whoami", digitada: true },
   {
@@ -56,23 +55,21 @@ export default function CardsDadosTerminal() {
   const [started, setStarted] = useState(false);
   const terminalRef = useRef<HTMLDivElement>(null);
 
-  // 1) Observer: só marca started quando o terminal entra na viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setStarted(true);
-          observer.disconnect(); // dispara uma vez só
+          observer.disconnect(); 
         }
       },
-      { threshold: 0.6 }, // 60% do terminal visível
+      { threshold: 0.6 }, 
     );
 
     if (terminalRef.current) observer.observe(terminalRef.current);
     return () => observer.disconnect();
   }, []);
 
-  // 2) Typing: só roda depois que started vira true
   useEffect(() => {
     if (!started) return;
 
@@ -110,18 +107,18 @@ export default function CardsDadosTerminal() {
   }, [started]);
 
   return (
-    <div className="container mx-auto grid gap-6 md:grid-cols-[1.15fr_0.85fr]">
-      <div className="bg-stone-900/30 rounded-xl border border-stone-800 p-4">
-        <div className="flex gap-2 text-center">
-          <Zap className="h-3.5 w-3.5 text-green-500" />
-          <p className="font-mono text-xs uppercase tracking-wider text-stone-500 mb-4">
+    <div className="mx-auto grid gap-6 md:grid-cols-[1.15fr_0.85fr]">
+      <div className="bg-neutral-800/40 rounded-xl border border-neutral-800 px-4 py-6 shadow-lg shadow-neutral-950/50">
+        <div className="flex gap-4 text-center">
+          <Zap className="h-3.5 w-3.5 text-green-300/50" />
+          <p className="font-mono text-xs uppercase tracking-wider text-neutral-500 mb-4">
             Meus dados atuais
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
           {informacoesAtuais.map((item) => (
             <div key={item.titulo} className="flex flex-col">
-              <span className="text-xs text-stone-500">{item.titulo}</span>
+              <span className="text-xs text-neutral-500 font-mono mb-1 ml-1.5">{item.titulo}</span>
               <span className="text-sm text-(--cor-primaria)">
                 {item.descricao}
               </span>
@@ -130,10 +127,9 @@ export default function CardsDadosTerminal() {
         </div>
       </div>
 
-      {/* ref AQUI: é este elemento que o observer vigia */}
       <div
         ref={terminalRef}
-        className="flex flex-col overflow-hidden rounded-xl border border-stone-800 bg-stone-950"
+        className="flex flex-col overflow-hidden rounded-xl border border-stone-800 bg-neutral-900/30 shadow-lg shadow-stone-950/50"
       >
         <div className="flex items-center gap-1.5 border-b border-stone-800 px-3.5 py-2.5">
           <i className="h-2.5 w-2.5 rounded-full bg-stone-700" />
