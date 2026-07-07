@@ -14,7 +14,7 @@ const ROTEIRO: Linha[] = [
   },
   { texto: "$ git log --oneline -2", digitada: true },
   {
-    texto: "a1f2c3 feat: push energetico no dev",
+    texto: "a1f2c3 feat: push energetico",
     digitada: false,
     cor: "text-stone-500",
   },
@@ -60,10 +60,10 @@ export default function CardsDadosTerminal() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setStarted(true);
-          observer.disconnect(); 
+          observer.disconnect();
         }
       },
-      { threshold: 0.6 }, 
+      { threshold: 0.6 },
     );
 
     if (terminalRef.current) observer.observe(terminalRef.current);
@@ -118,7 +118,9 @@ export default function CardsDadosTerminal() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
           {informacoesAtuais.map((item) => (
             <div key={item.titulo} className="flex flex-col">
-              <span className="text-xs text-neutral-500 font-mono mb-1 ml-1.5">{item.titulo}</span>
+              <span className="text-xs text-neutral-500 font-mono mb-1 ml-1.5">
+                {item.titulo}
+              </span>
               <span className="text-sm text-(--cor-primaria)">
                 {item.descricao}
               </span>
