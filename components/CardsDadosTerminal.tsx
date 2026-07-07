@@ -148,7 +148,7 @@ export default function CardsDadosTerminal() {
           {digitando && <div>{digitando}</div>}
           <span className="inline-flex items-center gap-1">
             {!started && <span className="text-stone-400">$</span>}
-            <span className="cursor-piscante inline-block h-3 w-[7px] bg-stone-400" />
+            <span className="cursor-piscante inline-block h-3 w-1.75 bg-stone-400" />
           </span>
         </div>
       </div>
