@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,6 +19,10 @@ export const metadata: Metadata = {
     "Desenvolvedor Full Stack em Goiânia/BR. Next.js, TypeScript e PostgreSQL. Construo produtos do banco de dados à interface.",
   keywords: [
     "desenvolvedor full stack",
+    "desenvolvedor full stack junior",
+    "desenvolvedor junior",
+    "desenvolvedor web junior",
+    "desenvolvedor web",
     "next.js",
     "typescript",
     "postgresql",
@@ -46,8 +51,9 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth `}
     >
-      <body className="min-h-full flex flex-col px-2 md:px-24 ">
+      <body className="min-h-full ">
         {children}
+        <Footer />
       </body>
     </html>
   );
