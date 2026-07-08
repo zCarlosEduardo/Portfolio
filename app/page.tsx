@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import CardsDadosTerminal from "@/components/CardsDadosTerminal";
 import Formacoes from "@/components/Formacoes";
 import MarqueeTecnologias from "@/components/MarqueeTecnologias";
@@ -12,6 +13,14 @@ export default function Home() {
       <section className="relative flex min-h-[92vh] flex-col justify-center gap-16 px-6 md:px-0">
         <div
           className="hero-dots pointer-events-none absolute inset-0"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute left-[-10%] top-[18%] h-[55%] w-[65%] blur-[10px]"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(237,237,237,0.05) 0%, transparent 65%)",
+          }}
           aria-hidden="true"
         />
         <div className="container mx-auto flex flex-col gap-14">
@@ -38,18 +47,11 @@ export default function Home() {
             atenção real a design e experiência do usuário.
           </p>
           <div className="flex gap-6">
-            <a
-              href="#projetos"
-              className="px-6 py-3.5 md:px-10 border rounded-full border-stone-800 text-sm cursor-pointer bg-(--cor-primaria) hover:bg-stone-100/80 text-(--background) hover:-translate-y-0.5 transition-all duration-300 font-medium"
-            >
-              Ver projetos
-            </a>
-            <a
-              href="#contato"
-              className="px-6 py-3.5 md:px-10 border rounded-full border-stone-800 text-sm cursor-pointer  text-(--cor-secundaria) hover:border-(--cor-primaria) hover:text-(--cor-primaria) hover:-translate-y-0.5 transition-all duration-300 "
-            >
+            <Button href="#projetos">Ver projetos</Button>
+
+            <Button href="#contato" variant="secondary">
               Entrar em contato
-            </a>
+            </Button>
           </div>
         </div>
       </section>
@@ -85,12 +87,54 @@ export default function Home() {
             subtitulo="Skills"
             paragrafo="O que uso em produção hoje."
           />
-          <h4 className="text-xs text-(--cor-secundaria) tracking-wide uppercase ml-3 my-3 font-mono">
+          <span className="text-xs text-(--cor-secundaria) tracking-wide uppercase ml-3 my-3 font-mono">
             Formação
-          </h4>
-          <Formacoes/>
+          </span>
+          <Formacoes />
         </div>
-        <div id="contato" className="pt-20"></div>
+        <div id="contato" className="relative overflow-hidden">
+          <div className="flex flex-col justify-center items-center text-center min-h-[90svh] md:min-h-[50svh]">
+            <div
+              className="pointer-events-none absolute bottom-[-40%] left-1/2 h-[70%] w-[80%]
+               -translate-x-1/2 blur-md"
+              style={{
+                background:
+                  "radial-gradient(ellipse at center, rgba(237,237,237,0.06) 0%, transparent 65%)",
+              }}
+              aria-hidden="true"
+            />
+            <span className="text-xs text-(--cor-secundaria) tracking-wide uppercase ml-3 mb-12 font-mono">
+              Contato
+            </span>
+            <h2 className="text-4xl font-bold max-w-lg">
+              Procurando alguém que aprende rápido e entrega de verdade?
+            </h2>
+            <p className="py-6 max-w-lg text-(--cor-secundaria)">
+              Respondo rápido, converso sem enrolação e chego na entrevista com
+              código em produção pra mostrar não só slides.
+            </p>
+            <div className="flex gap-8">
+              <Button href="">Ver projetos</Button>
+              <Button
+                href="https://github.com/zCarlosEduardo"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="gitHub"
+              >
+                Ver GitHub
+              </Button>
+            </div>
+            <span className="mt-8 text-(--cor-secundaria) text-xs">
+              ou direto:{" "}
+              <a
+                href="mailto:contato.cseduardo@gmail.com"
+                className="border-b border-neutral-700 text-neutral-400 hover:animate-pulse"
+              >
+                contato.cseduardo@gmail.com
+              </a>
+            </span>
+          </div>
+        </div>
       </div>
     </>
   );
