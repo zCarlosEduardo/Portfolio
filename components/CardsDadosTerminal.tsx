@@ -46,7 +46,7 @@ const informacoesAtuais = [
     descricao: "Vim resolver o seu problema.",
   },
   { titulo: "Trajetória", descricao: "Suporte → Implantação → dev" },
-  { titulo: "Contato", descricao: "cseduardoalonso@gmail.com" },
+  { titulo: "Contato", descricao: "contato.cseduardo@gmail.com" },
 ];
 
 export default function CardsDadosTerminal() {
