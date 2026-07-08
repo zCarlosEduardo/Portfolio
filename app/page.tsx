@@ -1,8 +1,10 @@
 import Button from "@/components/Button";
 import CardsDadosTerminal from "@/components/CardsDadosTerminal";
+import Experiencias from "@/components/Experiencias";
 import Formacoes from "@/components/Formacoes";
 import MarqueeTecnologias from "@/components/MarqueeTecnologias";
 import ParticleCanvas from "@/components/ParticleCanvas";
+import StackCard from "@/components/StackCard";
 import TituloSections from "@/components/TituloSections";
 import TopBar from "@/components/topBar";
 
@@ -77,11 +79,21 @@ export default function Home() {
           />
         </section>
 
+        {/* Skills */}
+        <section id="skills" className="pt-20">
+          <TituloSections
+            titulo="Stack"
+            subtitulo="Skills"
+            paragrafo="O que uso em produção hoje."
+          />
+          <StackCard />
+        </section>
+
         {/* Sobres talves remover */}
         <section id="sobre" className="pt-20">
           <TituloSections
             titulo="O que você leva contratando um júnior que pensa assim"
-            subtitulo="Como eu trabalho"
+            subtitulo="Conheça me"
             paragrafo="Júnior não significa esperar tarefa pronta. Significa aprender rápido e entregar com responsabilidade. Meu Sobre:"
           />
         </section>
@@ -93,18 +105,12 @@ export default function Home() {
             subtitulo="Experiência"
             paragrafo="Entrei em tecnologia resolvendo chamado de suporte aquele tipo de trabalho que te ensina a ouvir o problema real do usuário antes de qualquer linha de código. Foi ali que decidi migrar pra desenvolvimento, e hoje isso pesa a favor: enxergo o sistema pelos dois lados, de quem usa e de quem constrói."
           />
-        </section>
-
-        {/* Skills e Formações */}
-        <section id="skills" className="pt-20">
-          <TituloSections
-            titulo="Stack"
-            subtitulo="Skills"
-            paragrafo="O que uso em produção hoje."
-          />
-          <span className="text-xs text-(--cor-secundaria) tracking-wide uppercase ml-3 my-3 font-mono">
-            Formação
-          </span>
+          <Experiencias />
+          <div className="my-4 ml-3 ">
+            <span className="text-xs text-(--cor-secundaria) tracking-wide uppercase font-mono">
+              Formação
+            </span>
+          </div>
           <Formacoes />
         </section>
 
