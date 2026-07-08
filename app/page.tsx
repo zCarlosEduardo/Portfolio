@@ -39,7 +39,7 @@ export default function Home() {
               Goiânia, Brasil · GMT-3 · disponível para projetos
             </span>
           </div>
-          <ParticleCanvas text="CarlosEduardo" />
+          <ParticleCanvas text="Carlos Eduardo" />
           <p className="text-(--cor-secundaria) text-md md:text-lg max-w-lg ">
             Full stack developer que{" "}
             <span className="text-(--cor-primaria)">
@@ -77,12 +77,12 @@ export default function Home() {
           />
         </section>
 
-        {/* Processos talves remover */}
-        <section id="processo" className="pt-20">
+        {/* Sobres talves remover */}
+        <section id="sobre" className="pt-20">
           <TituloSections
             titulo="O que você leva contratando um júnior que pensa assim"
             subtitulo="Como eu trabalho"
-            paragrafo="Júnior não significa esperar tarefa pronta. Significa aprender rápido e entregar com responsabilidade. Meu processo:"
+            paragrafo="Júnior não significa esperar tarefa pronta. Significa aprender rápido e entregar com responsabilidade. Meu Sobre:"
           />
         </section>
 
@@ -110,7 +110,7 @@ export default function Home() {
 
         {/* Contato */}
         <section id="contato" className="relative overflow-hidden">
-          <div className="flex flex-col justify-center items-center text-center min-h-[90svh] md:min-h-[50svh]">
+          <div className="flex flex-col justify-center items-center text-center min-h-[90svh] md:min-h-[80svh]">
             <div
               className="pointer-events-none absolute bottom-[-40%] left-1/2 h-[70%] w-[80%]
                -translate-x-1/2 blur-md"

@@ -75,10 +75,10 @@ export default function Formacoes() {
             <span className="ml-3 truncate">
               Desenvolva aplicações web Acessíveis
             </span>
-              <span className="text-[10px] text-(--cor-secundaria) tracking-wide font-mono">
-                {" "}
-                3 cursos
-              </span>
+            <span className="text-xs text-(--cor-secundaria) tracking-wide font-mono">
+              {" "}
+              3 cursos
+            </span>
           </div>
           <span className="text-(--cor-secundaria) text-sm tracking-wide font-mono">
             Alura
@@ -103,16 +103,15 @@ export default function Formacoes() {
             >
               <div className="overflow-hidden">
                 <div className="flex gap-2 justify-between">
-                  <div>
-                  <span className="ml-3 text-neutral-300 max-w-6 truncate">
-                    {item.certificado}
-                  </span>
-                    <span className="text-[8px] text-(--cor-secundaria) tracking-wide font-mono">
-                      {" "}
+                  <div className="min-w-0 flex items-baseline gap-1">
+                    <span className="ml-3 text-neutral-300 truncate">
+                      {item.certificado}
+                    </span>
+                    <span className="shrink-0 text-xs text-(--cor-secundaria) tracking-wide font-mono">
                       {item.cursos}
                     </span>
                   </div>
-                  <span className="text-(--cor-secundaria) text-sm tracking-wide font-mono truncate">
+                  <span className="shrink-0 text-(--cor-secundaria) text-sm tracking-wide font-mono">
                     {item.empresa}
                   </span>
                 </div>
