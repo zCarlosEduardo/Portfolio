@@ -10,19 +10,21 @@ export default function Home() {
   return (
     <>
       <TopBar />
+      {/* Hero Section */}
       <section className="relative flex min-h-[92vh] flex-col justify-center gap-16 px-6 md:px-0">
         <div
           className="hero-dots pointer-events-none absolute inset-0"
           aria-hidden="true"
         />
-        <div
+        {/* Glow de fundo Hero*/}
+        {/* <div
           className="pointer-events-none absolute left-[-10%] top-[18%] h-[55%] w-[65%] blur-[10px]"
           style={{
             background:
               "radial-gradient(ellipse at center, rgba(237,237,237,0.05) 0%, transparent 65%)",
           }}
           aria-hidden="true"
-        />
+        /> */}
         <div className="container mx-auto flex flex-col gap-14">
           <div className="flex gap-4 items-center ">
             <div
@@ -55,33 +57,46 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className="container mx-auto px-4 lg:px-0 flex flex-col gap-14">
+
+      {/* Cards Informações e terminal */}
+      <section className="container mx-auto px-4 lg:px-0 flex flex-col gap-14">
         <CardsDadosTerminal />
-      </div>
+      </section>
+
+      {/* Carrosel de stacks usadas */}
       <MarqueeTecnologias />
-      <div id="projetos" className="pt-20"></div>
 
       <div className="container mx-auto px-4 lg:px-0 flex flex-col gap-14">
-        <TituloSections
-          titulo="Não é lista de tutorial. É produto com decisão técnica."
-          subtitulo="Projetos"
-          paragrafo="Cada projeto abaixo passou por problema real, escolha de arquitetura, bug difícil e refatoração honesta. O formato é o mesmo que uso no trabalho: contexto, desafio, decisão, resultado."
-        />
+        {/* Projetos */}
 
-        <div id="processo" className="pt-20">
+        <section id="projetos" className="pt-20">
+          <TituloSections
+            titulo="Não é lista de tutorial. É produto com decisão técnica."
+            subtitulo="Projetos"
+            paragrafo="Cada projeto abaixo passou por problema real, escolha de arquitetura, bug difícil e refatoração honesta. O formato é o mesmo que uso no trabalho: contexto, desafio, decisão, resultado."
+          />
+        </section>
+
+        {/* Processos talves remover */}
+        <section id="processo" className="pt-20">
           <TituloSections
             titulo="O que você leva contratando um júnior que pensa assim"
             subtitulo="Como eu trabalho"
             paragrafo="Júnior não significa esperar tarefa pronta. Significa aprender rápido e entregar com responsabilidade. Meu processo:"
           />
-        </div>
-        <div id="experiencia" className="pt-20"></div>
-        <TituloSections
-          titulo="De suporte a desenvolvimento"
-          subtitulo="Experiência"
-          paragrafo="Entrei em tecnologia resolvendo chamado de suporte aquele tipo de trabalho que te ensina a ouvir o problema real do usuário antes de qualquer linha de código. Foi ali que decidi migrar pra desenvolvimento, e hoje isso pesa a favor: enxergo o sistema pelos dois lados, de quem usa e de quem constrói."
-        />
-        <div id="skills" className="pt-20">
+        </section>
+
+        {/* Carreira */}
+        <section id="experiencia" className="pt-20">
+          <TituloSections
+            titulo="De suporte a desenvolvimento"
+            subtitulo="Experiência"
+            paragrafo="Entrei em tecnologia resolvendo chamado de suporte aquele tipo de trabalho que te ensina a ouvir o problema real do usuário antes de qualquer linha de código. Foi ali que decidi migrar pra desenvolvimento, e hoje isso pesa a favor: enxergo o sistema pelos dois lados, de quem usa e de quem constrói."
+          />
+        </section>
+
+        {/* Skills e Formações */}
+        <section id="skills" className="pt-20">
           <TituloSections
             titulo="Stack"
             subtitulo="Skills"
@@ -91,8 +106,10 @@ export default function Home() {
             Formação
           </span>
           <Formacoes />
-        </div>
-        <div id="contato" className="relative overflow-hidden">
+        </section>
+
+        {/* Contato */}
+        <section id="contato" className="relative overflow-hidden">
           <div className="flex flex-col justify-center items-center text-center min-h-[90svh] md:min-h-[50svh]">
             <div
               className="pointer-events-none absolute bottom-[-40%] left-1/2 h-[70%] w-[80%]
@@ -114,7 +131,9 @@ export default function Home() {
               código em produção pra mostrar não só slides.
             </p>
             <div className="flex gap-8">
-              <Button href="">Ver projetos</Button>
+              <Button href="https://wa.me/5562983263038">
+                Mandar mensagem
+              </Button>
               <Button
                 href="https://github.com/zCarlosEduardo"
                 target="_blank"
@@ -134,7 +153,7 @@ export default function Home() {
               </a>
             </span>
           </div>
-        </div>
+        </section>
       </div>
     </>
   );

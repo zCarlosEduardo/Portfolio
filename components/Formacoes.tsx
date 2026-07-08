@@ -4,26 +4,49 @@ import { ChevronDown, ChevronsDown } from "lucide-react";
 import { useState } from "react";
 
 const certificados = [
-  { certificado: "The Origins III: JavaScript", empresa: "Codédex", data: "" },
+  { certificado: "DB Developer", empresa: "Descomplica", cursos: "160 Horas" },
+  {
+    certificado: "Arquitetura e Organização de computadores",
+    empresa: "Descomplica",
+    cursos: "240 Horas",
+  },
+  {
+    certificado: "The Origins III: JavaScript",
+    empresa: "Codédex",
+    cursos: "16h",
+  },
   {
     certificado: "Formação A partir do zero: iniciante em programação",
     empresa: "Alura",
-    data: "",
+    cursos: "4 Cursos",
   },
-  { certificado: "HTML5 e CSS3 parte 2", empresa: "Alura", data: "" },
-  { certificado: "HTML5 e CSS3 parte 3", empresa: "Alura", data: "" },
-  { certificado: "CSS Grid", empresa: "Alura", data: "" },
-  { certificado: "HTML5 e CSS3 parte 4", empresa: "Alura", data: "" },
-  { certificado: "Guia de estilos", empresa: "Alura", data: "" },
-  { certificado: "Flexbox", empresa: "Alura", data: "" },
-  { certificado: "Acessibilidade web", empresa: "Alura", data: "" },
-  { certificado: "Acessibilidade web parte 1", empresa: "Alura", data: "" },
-  { certificado: "Acessibilidade web parte 2", empresa: "Alura", data: "" },
-  { certificado: "Start na programação", empresa: "OneBitCode", data: "" },
-  { certificado: "Algoritmos com JavaScript II", empresa: "Alura", data: "" },
-  { certificado: "Front-end UI", empresa: "Alura", data: "" },
-  { certificado: "JavaScript para Web", empresa: "Alura", data: "" },
-  { certificado: "Colorização digital", empresa: "Alura", data: "" },
+  { certificado: "HTML e CSS", empresa: "Alura", cursos: "5 Cursos" },
+  {
+    certificado: "WordPress: crie sites do zero",
+    empresa: "Alura",
+    cursos: "17 Horas",
+  },
+  {
+    certificado: "Pratique HTML e CSS em projetos Web",
+    empresa: "Alura",
+    cursos: "4 Cursos",
+  },
+  {
+    certificado: "Cursos de Back-end (Go e JavaScript)",
+    empresa: "Alura",
+    cursos: "124 Horas",
+  },
+  { certificado: "Cursos de Front-End", empresa: "Alura", cursos: "110 Horas" },
+  {
+    certificado: "Curso: Colorização digital",
+    empresa: "Alura",
+    cursos: "8 Horas",
+  },
+  {
+    certificado: "SEO: Otimização de sites",
+    empresa: "Alura",
+    cursos: "8 Horas",
+  },
 ];
 
 export default function Formacoes() {
@@ -31,26 +54,34 @@ export default function Formacoes() {
 
   const isAberto = limite > 0;
 
-  const verMais = () => setLimite((prev) => prev + 10);
+  const verMais = () => setLimite((prev) => prev + 12);
   const recolher = () => setLimite(0);
 
   return (
     <div className="w-full">
       {/* Bloco Fixo Principal */}
       <div>
-        <div className="flex gap-2 justify-between border-y border-0 border-neutral-900 py-4 flex-wrap">
-          <span className="ml-3">
-            Ciência da Computação{" "}
+        <div className="flex gap-2 justify-between border-y border-0 border-neutral-900 py-4">
+          <div className="">
+            <span className="ml-3 truncate ">Ciência da Computação </span>
             <i className="text-xs text-(--cor-secundaria)">(cursando)</i>
-          </span>
-          <span className="text-(--cor-secundaria) text-sm tracking-wide font-mono">
+          </div>
+          <span className="text-(--cor-secundaria) text-sm tracking-wide font-mono truncate">
             Descomplica Faculdade Digital
           </span>
         </div>
-        <div className="flex gap-2 justify-between border-b border-0 border-neutral-900 py-4 flex-wrap">
-          <span className="ml-3">Formações em desenvolvimento web</span>
+        <div className="flex gap-2 justify-between border-b border-0 border-neutral-900 py-4">
+          <div className="truncate">
+            <span className="ml-3 truncate">
+              Desenvolva aplicações web Acessíveis
+            </span>
+              <span className="text-[10px] text-(--cor-secundaria) tracking-wide font-mono">
+                {" "}
+                3 cursos
+              </span>
+          </div>
           <span className="text-(--cor-secundaria) text-sm tracking-wide font-mono">
-            Alura · Codédex
+            Alura
           </span>
         </div>
       </div>
@@ -71,11 +102,17 @@ export default function Formacoes() {
               }`}
             >
               <div className="overflow-hidden">
-                <div className="flex gap-2 justify-between flex-wrap">
-                  <span className="ml-3 text-neutral-300">
+                <div className="flex gap-2 justify-between">
+                  <div>
+                  <span className="ml-3 text-neutral-300 max-w-6 truncate">
                     {item.certificado}
                   </span>
-                  <span className="text-(--cor-secundaria) text-sm tracking-wide font-mono">
+                    <span className="text-[8px] text-(--cor-secundaria) tracking-wide font-mono">
+                      {" "}
+                      {item.cursos}
+                    </span>
+                  </div>
+                  <span className="text-(--cor-secundaria) text-sm tracking-wide font-mono truncate">
                     {item.empresa}
                   </span>
                 </div>
@@ -94,7 +131,7 @@ export default function Formacoes() {
           >
             {isAberto ? (
               <>
-                Ver mais (+10)
+                Ver mais
                 <ChevronDown className="w-4 h-4 animate-pulse text-green-300" />
               </>
             ) : (
