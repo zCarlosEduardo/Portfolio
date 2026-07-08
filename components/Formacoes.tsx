@@ -1,27 +1,29 @@
 "use client";
 
+import { ChevronDown, ChevronsDown } from "lucide-react";
 import { useState } from "react";
 
 const certificados = [
-  { certificado: "The Origins III: JavaScript", empresa: "Codédex", data: "", },
+  { certificado: "The Origins III: JavaScript", empresa: "Codédex", data: "" },
   {
     certificado: "Formação A partir do zero: iniciante em programação",
-    empresa: "Alura", data: "",
+    empresa: "Alura",
+    data: "",
   },
-  { certificado: "HTML5 e CSS3 parte 2", empresa: "Alura", data: "", },
-  { certificado: "HTML5 e CSS3 parte 3", empresa: "Alura", data: "", },
-  { certificado: "CSS Grid", empresa: "Alura", data: "", },
-  { certificado: "HTML5 e CSS3 parte 4", empresa: "Alura", data: "", },
-  { certificado: "Guia de estilos", empresa: "Alura", data: "", },
-  { certificado: "Flexbox", empresa: "Alura", data: "", },
-  { certificado: "Acessibilidade web", empresa: "Alura", data: "", },
-  { certificado: "Acessibilidade web parte 1", empresa: "Alura", data: "", },
-  { certificado: "Acessibilidade web parte 2", empresa: "Alura", data: "", },
-  { certificado: "Start na programação", empresa: "OneBitCode", data: "", },
-  { certificado: "Algoritmos com JavaScript II", empresa: "Alura", data: "", },
-  { certificado: "Front-end UI", empresa: "Alura", data: "", },
-  { certificado: "JavaScript para Web", empresa: "Alura", data: "", },
-  { certificado: "Colorização digital", empresa: "Alura", data: "", },
+  { certificado: "HTML5 e CSS3 parte 2", empresa: "Alura", data: "" },
+  { certificado: "HTML5 e CSS3 parte 3", empresa: "Alura", data: "" },
+  { certificado: "CSS Grid", empresa: "Alura", data: "" },
+  { certificado: "HTML5 e CSS3 parte 4", empresa: "Alura", data: "" },
+  { certificado: "Guia de estilos", empresa: "Alura", data: "" },
+  { certificado: "Flexbox", empresa: "Alura", data: "" },
+  { certificado: "Acessibilidade web", empresa: "Alura", data: "" },
+  { certificado: "Acessibilidade web parte 1", empresa: "Alura", data: "" },
+  { certificado: "Acessibilidade web parte 2", empresa: "Alura", data: "" },
+  { certificado: "Start na programação", empresa: "OneBitCode", data: "" },
+  { certificado: "Algoritmos com JavaScript II", empresa: "Alura", data: "" },
+  { certificado: "Front-end UI", empresa: "Alura", data: "" },
+  { certificado: "JavaScript para Web", empresa: "Alura", data: "" },
+  { certificado: "Colorização digital", empresa: "Alura", data: "" },
 ];
 
 export default function Formacoes() {
@@ -37,7 +39,10 @@ export default function Formacoes() {
       {/* Bloco Fixo Principal */}
       <div>
         <div className="flex gap-2 justify-between border-y border-0 border-neutral-900 py-4 flex-wrap">
-          <span className="ml-3">Ciência da Computação <i className="text-xs text-(--cor-secundaria)">(cursando)</i></span>
+          <span className="ml-3">
+            Ciência da Computação{" "}
+            <i className="text-xs text-(--cor-secundaria)">(cursando)</i>
+          </span>
           <span className="text-(--cor-secundaria) text-sm tracking-wide font-mono">
             Descomplica Faculdade Digital
           </span>
@@ -85,9 +90,19 @@ export default function Formacoes() {
         {limite < certificados.length && (
           <button
             onClick={verMais}
-            className="px-4 py-1.5 bg-neutral-900 text-neutral-200 text-sm font-mono border border-neutral-800 rounded hover:bg-neutral-800 transition"
+            className="flex items-center gap-2 px-4 py-1.5 text-sm border border-(--background) rounded  hover:border-(--cor-ok)/10 hover:shadow-md hover:shadow-green-800/20 font-mono transition hover:-translate-y-0.5 "
           >
-            {isAberto ? "Ver mais (+10)" : "Ver certificados"}
+            {isAberto ? (
+              <>
+                Ver mais (+10)
+                <ChevronDown className="w-4 h-4 animate-pulse text-green-300" />
+              </>
+            ) : (
+              <>
+                Ver certificados
+                <ChevronsDown className="w-4 h-4 animate-pulse text-green-300" />
+              </>
+            )}
           </button>
         )}
 
