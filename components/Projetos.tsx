@@ -2,10 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { AlarmClock, HeartHandshake, Car, Coins } from "lucide-react";
 
-/* ============================================================
-   CodeMock: janela de código com nome de arquivo.
-   A linha importante de cada snippet vai pintada com var(--acc).
-   ============================================================ */
+
 function CodeMock({
   arquivo,
   children,
@@ -285,41 +282,29 @@ export async function listarMetas(
       <CaseCard
         cor="#60a5fa"
         icone={Car}
-        categoria="Dashboard · Proteção Veicular"
-        nome="ProtecAuto"
+        categoria="Automação em GoLang"
+        nome="Automação no sistema"
         contexto={
           <>
             <strong className="text-neutral-200">
-              Dashboard SaaS que centraliza múltiplas associações de proteção
-              veicular
+              Automatização de tarefa repetiva e demorada
             </strong>
-            , cada uma com sua própria instância de ERP (Hinova SGA). Construído
-            dentro do meu trabalho na ARX, do levantamento de requisitos ao
-            código.
+            , realizamos uma automatizacao para mudanca de nome e dados dentro do ERP onde levava horas agora esta automatico
           </>
         }
         desafio={
           <>
-            Unificar dados de vários ERPs independentes e traduzir o negócio em
-            métricas: sinistralidade, ticket médio e frequência.
+            Etender como o ERP funcionava por traz para automatizar tudo com playwirith
           </>
         }
         decisao={
           <>
-            Modelar o domínio antes do código e estruturar acesso por papéis:{" "}
-            <strong className="text-neutral-200">admin global</strong>, gestora
-            de associação e usuário de cooperativa — cada um vê apenas o seu
-            recorte.
+            A escrever
           </>
         }
         resultado={
           <>
-            Visão consolidada que antes exigia entrar em cada ERP separadamente.
-            Aqui aprendi a{" "}
-            <strong className="text-neutral-200">
-              conversar com o negócio
-            </strong>
-            , não só com o código.
+escrever
           </>
         }
         stack={[
@@ -331,12 +316,7 @@ export async function listarMetas(
         ]}
         codigo={
           <CodeMock arquivo="kpis.ts">
-            {`// regra de negócio virando código
-export function sinistralidade(
-  despesasSinistros: number,
-  receitaMensalidades: number
-) {
-  if (receitaMensalidades === 0) return 0;
+            {`// Golang
   `}
             <Hl>{`return despesasSinistros
     / receitaMensalidades;`}</Hl>
@@ -351,7 +331,7 @@ export function sinistralidade(
         cor="#4ade80"
         icone={Coins}
         categoria="Integração · Next + Django"
-        nome="Sys Coin"
+        nome="Sys Coin v1"
         link={{
           href: "https://github.com/zCarlosEduardo",
           label: "ver no github",
