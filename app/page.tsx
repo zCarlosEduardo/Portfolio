@@ -4,9 +4,10 @@ import Experiencias from "@/components/Experiencias";
 import Formacoes from "@/components/Formacoes";
 import MarqueeTecnologias from "@/components/MarqueeTecnologias";
 import ParticleCanvas from "@/components/ParticleCanvas";
+import Projetos from "@/components/Projetos";
 import StackCard from "@/components/StackCard";
 import TituloSections from "@/components/TituloSections";
-import TopBar from "@/components/topBar";
+import TopBar from "@/components/TopBar";
 
 export default function Home() {
   return (
@@ -61,14 +62,14 @@ export default function Home() {
       </section>
 
       {/* Cards Informações e terminal */}
-      <section className="container mx-auto px-4 lg:px-0 flex flex-col gap-14">
+      <section className="container mx-auto lg:px-0 flex flex-col gap-14">
         <CardsDadosTerminal />
       </section>
 
       {/* Carrosel de stacks usadas */}
       <MarqueeTecnologias />
 
-      <div className="container mx-auto px-4 lg:px-0 flex flex-col gap-14">
+      <div className="container mx-auto p-4 md:p-0 lg:px-0 flex flex-col gap-14">
         {/* Projetos */}
 
         <section id="projetos" className="pt-20">
@@ -77,6 +78,7 @@ export default function Home() {
             subtitulo="Projetos"
             paragrafo="Cada projeto abaixo passou por problema real, escolha de arquitetura, bug difícil e refatoração honesta. O formato é o mesmo que uso no trabalho: contexto, desafio, decisão, resultado."
           />
+          <Projetos />
         </section>
 
         {/* Skills */}
