@@ -2,7 +2,6 @@ import type { CSSProperties, ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { AlarmClock, HeartHandshake, Car, Coins } from "lucide-react";
 
-
 function CodeMock({
   arquivo,
   children,
@@ -282,47 +281,53 @@ export async function listarMetas(
       <CaseCard
         cor="#60a5fa"
         icone={Car}
-        categoria="Automação em GoLang"
-        nome="Automação no sistema"
+        categoria="Automação · Go + Playwright"
+        nome="Automação de ERP em Go"
         contexto={
           <>
             <strong className="text-neutral-200">
-              Automatização de tarefa repetiva e demorada
+              Automação em Go + Playwright para ERP de gestão:
             </strong>
-            , realizamos uma automatizacao para mudanca de nome e dados dentro do ERP onde levava horas agora esta automatico
+            lê planilhas .xlsx com centenas de registros de cotas de veículos e
+            atualiza os valores no sistema um a um, com validação antes de cada
+            salvamento. O que tomava horas de trabalho manual agora roda
+            sozinho.
           </>
         }
         desafio={
           <>
-            Etender como o ERP funcionava por traz para automatizar tudo com playwirith
+            Entender como o ERP renderizava os dados por trás (DataTables
+            carregando via AJAX, timing imprevisível) e garantir que a automação
+            jamais salvasse valor errado — erro monetário em produção não tem
+            Ctrl+Z.
           </>
         }
         decisao={
           <>
-            A escrever
+            Go com Playwright para automação de browser, parsing do .xlsx com
+            validação de formato monetário e um cross-check obrigatório: antes
+            de salvar, o script relê o valor na tela e compara com a planilha.
+            Divergiu, aborta e registra no log.
           </>
         }
         resultado={
           <>
-escrever
+            Tarefa de horas virou processo automático e auditável. De quebra:
+            bug de BOM na planilha resolvido e a lição de que automação de UI é
+            20% código e 80% esperar o AJAX certo.
           </>
         }
-        stack={[
-          "Next.js",
-          "TypeScript",
-          "PostgreSQL",
-          "RBAC",
-          "Integração ERP",
-        ]}
+        stack={["Go", "Playwright", "xlsx"]}
         codigo={
           <CodeMock arquivo="kpis.ts">
-            {`// Golang
+            {`// cross-check antes de salvar
   `}
-            <Hl>{`return despesasSinistros
-    / receitaMensalidades;`}</Hl>
+            <Hl>{`valorTela, _ := page.Locator("#valorCota").InputValue()`}</Hl>
             {`
-}
-// meta saudável do setor: < 60%`}
+if normalizar(valorTela) != normalizar(valorPlanilha) {
+    log.Printf("divergência na cota %s — abortando", id)
+    continue
+}`}
           </CodeMock>
         }
       />

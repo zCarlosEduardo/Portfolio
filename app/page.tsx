@@ -94,9 +94,12 @@ export default function Home() {
         {/* Sobres talves remover */}
         <section id="sobre" className="pt-20">
           <TituloSections
-            titulo="O que você leva contratando um júnior que pensa assim"
+            titulo=" Sobre mim"
             subtitulo="Conheça me"
-            paragrafo="Júnior não significa esperar tarefa pronta. Significa aprender rápido e entregar com responsabilidade. Meu Sobre:"
+            paragrafo='Do chamado de suporte ao deploy em produção
+Sou o Carlos, Cadu pros íntimos desenvolvedor full stack em Goiânia. Entrei em tecnologia pela porta do suporte: atendendo chamado em rede de supermercado, aprendendo na marra a traduzir "o sistema não funciona" em problema técnico de verdade. Isso mudou como eu programo até hoje: antes de escrever qualquer linha, quero entender quem vai usar e onde dói.
+Na ARX entrei pra implantar sistemas e virei dev por iniciativa própria comecei automatizando uma tarefa que tomava horas do time, e a automação virou função. Hoje construo produto de ponta a ponta com Next.js, TypeScript e PostgreSQL, e mantenho apps em produção com usuários reais, do tipo que reclama na hora quando algo quebra.
+Fora do código, sou o cara que desmonta as coisas pra entender: eletrônica, robótica, carrinho RC de drift. O padrão é sempre o mesmo aprendo fazendo, quebro, conserto, documento. Júnior no crachá, mentalidade de dono do problema.'
           />
         </section>
 
