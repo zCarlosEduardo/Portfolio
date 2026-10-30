@@ -25,6 +25,8 @@ export default function ParticleCanvas({ text = "Carlos Eduardo" }: { text?: str
     // ---- estado do sistema: variáveis comuns, NÃO useState ----
     let particles: Particle[] = [];
     const mouse = { x: -9999, y: -9999 };
+    // movimento reduzido: o nome já nasce montado e não dispersa no scroll
+    const reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let scatter = 0; // 0 = topo (texto montado) → 1 = totalmente disperso
     let rafId = 0;
     let resizeTimer: ReturnType<typeof setTimeout>;
@@ -51,13 +53,22 @@ export default function ParticleCanvas({ text = "Carlos Eduardo" }: { text?: str
       const octx = off.getContext("2d");
       if (!octx) return;
 
-      const fontSize = Math.min(w / 7.2, 96);
-      octx.font = `600 ${fontSize}px sans-serif`;
-      octx.textBaseline = "middle";
-      octx.fillStyle = "#fff";
-
       // em tela estreita, quebra o nome em duas linhas
       const small = w < 560;
+      const linhaMaisLarga = small
+        ? text.split(" ").reduce((a, b) => (b.length > a.length ? b : a))
+        : text;
+
+      // mede o texto e reduz a fonte até caber na largura (antes cortava no tablet)
+      let fontSize = Math.min(h * (small ? 0.4 : 0.7), 132);
+      octx.font = `600 ${fontSize}px sans-serif`;
+      const largura = octx.measureText(linhaMaisLarga).width;
+      if (largura > w - 8) {
+        fontSize *= (w - 8) / largura;
+        octx.font = `600 ${fontSize}px sans-serif`;
+      }
+      octx.textBaseline = "middle";
+      octx.fillStyle = "#fff";
       if (small) {
         const [primeiro, ...resto] = text.split(" ");
         octx.fillText(primeiro, 4, h * 0.32);
@@ -77,8 +88,8 @@ export default function ParticleCanvas({ text = "Carlos Eduardo" }: { text?: str
       }
 
       particles = targets.map((t) => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
+        x: reduzido ? t.x : Math.random() * w,
+        y: reduzido ? t.y : Math.random() * h,
         tx: t.x,
         ty: t.y,
         sx: (Math.random() - 0.5) * 2,   // -1 a +1: espalha pros lados
@@ -155,7 +166,7 @@ export default function ParticleCanvas({ text = "Carlos Eduardo" }: { text?: str
 
     canvas.addEventListener("pointermove", onMove);
     canvas.addEventListener("pointerleave", onLeave);
-    window.addEventListener("scroll", onScroll, { passive: true });
+    if (!reduzido) window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
 
     // espera a fonte carregar antes de amostrar
@@ -164,8 +175,7 @@ export default function ParticleCanvas({ text = "Carlos Eduardo" }: { text?: str
       tick();
     });
 
-    // TODO (seus desafios): devicePixelRatio p/ tela retina
-    // e fallback prefers-reduced-motion (canvas → <h1> estático)
+    // TODO (seu desafio): devicePixelRatio p/ tela retina
 
     // ============================================================
     // PASSO E: a faxina — sem isso, loop fantasma no Strict Mode
@@ -183,8 +193,8 @@ export default function ParticleCanvas({ text = "Carlos Eduardo" }: { text?: str
   return (
     <canvas
       ref={canvasRef}
-      aria-label={text}
-      className="block h-35 w-full cursor-crosshair sm:h-47.5"
+      aria-hidden="true"
+      className="block h-35 w-full cursor-crosshair sm:h-47.5 lg:h-56"
     />
   );
 }

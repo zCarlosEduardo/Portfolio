@@ -11,6 +11,7 @@ type Experiencia = {
   periodo?: string;
   descricao: string;
   bullets?: string[];
+  tecnologias?: string[];
 };
 
 const experiencias: Experiencia[] = [
@@ -24,10 +25,11 @@ const experiencias: Experiencia[] = [
       "Comecei automatizando tarefas do time por conta própria. Virou função oficial.",
     bullets: [
       "Hub de automações integrado à API do GLPI: identifica chamados com automação pronta e executa o fluxo sozinho. 1min53s por chamado, mais de 13h de trabalho manual economizadas, zero execuções manuais.",
-      "Sistema interno de gamificação em Next.js, em produção.",
-      "Deploy com Docker em servidores Linux.",
-      "Dashboards no Power BI.",
-      "Implantação de CRMs e ERP.",
+      "Sistema interno de gamificação em Next.js e TypeScript, em produção, com desenvolvimento acelerado por IA (Cursor, Claude Code).",
+      "Banco de dados em PostgreSQL com Prisma e deploy com Docker em servidores Linux (Debian).",
+      "Dashboards no Power BI, com as telas prototipadas no Figma.",
+      "Implantação de CRMs (PowerCRM, Ileva, Five) e ERP (Hinova SGA), traduzindo regras de negócio em personalização.",
+      "Landing pages institucionais em Next.js com foco em performance e SEO.",
     ],
   },
   {
@@ -35,16 +37,42 @@ const experiencias: Experiencia[] = [
     cargo: "Assistente de TI",
     empresa: "SferaRol-Planalto",
     local: "Goiânia",
+    periodo: "jun/2024 – abr/2025",
     descricao:
       "Sustentação de infraestrutura, atendimento a usuários e manutenção de sistemas internos.",
+    bullets: [
+      "Suporte N1/N2 presencial e remoto, com gestão de incidentes e controle de SLA.",
+      "Administração do Microsoft 365.",
+      "Manutenção de hardware e rede, CFTV e monitoramento da infraestrutura.",
+    ],
   },
   {
     label: "início",
-    cargo: "Analista de Help Desk",
-    empresa: "Rede Tatico de Supermercados",
+    cargo: "Suporte de Helpdesk",
+    empresa: "Rede Tático de Supermercados",
     local: "Goiânia",
+    periodo: "jul/2023 – mai/2024",
     descricao:
-      "Primeira experiência em TI: suporte de alto volume no varejo, priorização sob pressão e comunicação com usuário não técnico. ",
+      "Primeira experiência em TI: suporte de alto volume no varejo, priorização sob pressão e comunicação com usuário não técnico.",
+    bullets: [
+      "Suporte técnico presencial e remoto para as lojas da rede.",
+      "Atendimento multicanal: telefone (ramal), WhatsApp e chamados no GLPI.",
+      "Acesso remoto via VNC e RDP para resolver incidentes.",
+      "Gestão de usuários no Active Directory e criação de vouchers de acesso à rede corporativa.",
+      "Suporte aos ERPs Consinco, Sênior, Acrux e RBtexto.",
+      "Manutenção preventiva e corretiva de PDVs, com troubleshooting de hardware e software.",
+      "Configuração e suporte de balanças comerciais (Mangellan, Prix).",
+    ],
+    tecnologias: [
+      "Windows",
+      "Active Directory",
+      "VNC",
+      "RDP",
+      "GLPI",
+      "ERP (Consinco, Sênior)",
+      "PDV",
+      "Balanças comerciais",
+    ],
   },
 ];
 
@@ -55,7 +83,7 @@ export default function Experiencias() {
     setAberto((prev) => (prev === index ? null : index));
 
   return (
-    <div className="w-full my-12">
+    <div className="w-full my-12 max-w-4xl">
       {experiencias.map((item, index) => {
         const isAtual = index === 0;
         const isAberto = aberto === index;
@@ -70,7 +98,7 @@ export default function Experiencias() {
               <div
                 className={`w-2.5 h-2.5 rounded-full border shrink-0 mt-1.5 transition-colors ${
                   isAtual
-                    ? "border-green-500 bg-green-500/20 shadow-[0_0_10px] shadow-green-500/30"
+                    ? "border-green-500 bg-green-500/20"
                     : "border-neutral-600"
                 }`}
               />
@@ -79,7 +107,7 @@ export default function Experiencias() {
 
             {/* ── Coluna 2: label temporal (some no mobile) ── */}
             <span
-              className={`hidden sm:block font-mono text-xs mt-1 ${
+              className={`hidden sm:block font-mono text-[13px] mt-1 ${
                 isAtual ? "text-green-400" : "text-(--cor-secundaria)"
               }`}
             >
@@ -94,7 +122,7 @@ export default function Experiencias() {
             >
               {/* Cargo + badge (só no atual) + chevron */}
               <div className="flex items-center gap-3 flex-wrap">
-                <span className="font-semibold text-neutral-100">
+                <span className="text-lg font-semibold text-neutral-100">
                   {item.cargo}
                 </span>
 
@@ -106,7 +134,7 @@ export default function Experiencias() {
               </div>
 
               {/* Empresa · local */}
-              <span className="block font-mono text-sm text-(--cor-secundaria) mt-1">
+              <span className="block font-mono text-[13px] md:text-sm text-(--cor-secundaria) mt-1">
                 {item.empresa} · {item.local}
                 {item.periodo && ` · ${item.periodo}`}
               </span>
@@ -120,15 +148,27 @@ export default function Experiencias() {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <p className="text-sm text-neutral-300 leading-relaxed">
+                  <p className="text-base text-neutral-200 leading-relaxed">
                     {item.descricao}
                   </p>
                   {item.bullets && (
-                    <ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-neutral-400 leading-relaxed">
+                    <ul className="mt-3 list-disc pl-5 space-y-1.5 text-[15px] md:text-base text-neutral-300 leading-relaxed">
                       {item.bullets.map((b) => (
                         <li key={b}>{b}</li>
                       ))}
                     </ul>
+                  )}
+                  {item.tecnologias && (
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {item.tecnologias.map((tec) => (
+                        <span
+                          key={tec}
+                          className="rounded-full border border-neutral-800 px-3 py-1 font-mono text-xs text-neutral-300"
+                        >
+                          {tec}
+                        </span>
+                      ))}
+                    </div>
                   )}
                 </div>
               </div>

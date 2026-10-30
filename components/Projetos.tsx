@@ -10,12 +10,12 @@ function Janela({
   children: ReactNode;
 }) {
   return (
-    <div className="w-full md:w-96 shrink-0 overflow-hidden rounded-lg border border-neutral-800 bg-neutral-950/70">
+    <div className="w-full sm:max-w-xl lg:w-96 xl:w-md shrink-0 overflow-hidden rounded-lg border border-neutral-800 bg-neutral-950/70">
       <div className="flex items-center gap-1.5 border-b border-neutral-800 px-3.5 py-2.5">
         <i className="h-2.5 w-2.5 rounded-full bg-neutral-700" />
         <i className="h-2.5 w-2.5 rounded-full bg-neutral-800" />
         <i className="h-2.5 w-2.5 rounded-full bg-neutral-800" />
-        <span className="ml-2 font-mono text-[10px] text-(--cor-secundaria)">
+        <span className="ml-2 font-mono text-xs text-(--cor-secundaria)">
           {arquivo}
         </span>
       </div>
@@ -84,7 +84,7 @@ function CaseCard({
 }: CaseCardProps) {
   return (
     <article
-      className="border border-neutral-800 rounded-lg p-5 bg-neutral-900/50 my-10 shadow-lg shadow-neutral-900/20"
+      className="border border-neutral-800 rounded-lg p-5 md:p-6 bg-neutral-900/50 my-10"
       style={{ "--acc": cor } as CSSProperties}
     >
       {/* topo */}
@@ -94,10 +94,10 @@ function CaseCard({
             <Icone />
           </div>
           <div className="flex flex-col">
-            <span className="font-mono tracking-wide text-(--cor-secundaria) text-xs">
+            <span className="font-mono tracking-wide text-(--cor-secundaria) text-[13px]">
               {categoria}
             </span>
-            <span className="text-2xl font-semibold">{nome}</span>
+            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">{nome}</h3>
           </div>
         </div>
         {link && (
@@ -105,28 +105,28 @@ function CaseCard({
             href={link.href}
             target="_blank"
             rel="noopener"
-            className="border border-neutral-800 rounded-lg bg-neutral-950/50 py-2 px-4 text-xs font-mono text-(--cor-secundaria) tracking-wide hover:text-neutral-300 hover:scale-103 shadow-lg hover:shadow-neutral-950/50 transition-all duration-300"
+            className="border border-neutral-800 rounded-lg bg-neutral-950/50 py-2 px-4 text-[13px] font-mono text-(--cor-secundaria) tracking-wide hover:text-neutral-200 hover:border-neutral-600 transition-colors duration-300"
           >
             {link.label}
           </a>
         )}
         {selo && (
-          <span className="border border-neutral-800 rounded-lg bg-neutral-950/50 py-2 px-4 text-xs font-mono text-(--cor-secundaria) tracking-wide">
+          <span className="border border-neutral-800 rounded-lg bg-neutral-950/50 py-2 px-4 text-[13px] font-mono text-(--cor-secundaria) tracking-wide">
             {selo}
           </span>
         )}
       </div>
 
       {/* contexto + código */}
-      <div className="flex flex-wrap-reverse md:flex-nowrap gap-6 justify-between items-center my-4">
-        <p className="md:max-w-96 lg:max-w-3xl text-neutral-400 text-md">
+      <div className="flex flex-col-reverse lg:flex-row gap-6 justify-between lg:items-center my-5">
+        <p className="lg:max-w-2xl text-neutral-300 text-base md:text-lg leading-relaxed">
           {contexto}
         </p>
         {codigo}
       </div>
 
       {/* desafio / decisão / resultado */}
-      <div className="grid md:grid-cols-3 min-h-44 rounded-2xl border border-neutral-800 bg-neutral-950/20">
+      <div className="grid md:grid-cols-3 rounded-2xl border border-neutral-800 bg-neutral-950/20">
         {[
           { titulo: "Desafio", corpo: desafio },
           { titulo: "Decisão", corpo: decisao, meio: true },
@@ -134,12 +134,12 @@ function CaseCard({
         ].map((col) => (
           <div
             key={col.titulo}
-            className={`p-4 ${col.meio ? "border-y md:border-y-0 md:border-x border-neutral-800" : ""}`}
+            className={`p-5 ${col.meio ? "border-y md:border-y-0 md:border-x border-neutral-800" : ""}`}
           >
-            <span className="font-mono tracking-wide uppercase text-xs text-(--cor-secundaria) ml-2">
+            <span className="font-mono tracking-wide uppercase text-[13px] text-(--cor-secundaria)">
               {col.titulo}
             </span>
-            <p className="text-neutral-400 text-sm mt-2">{col.corpo}</p>
+            <p className="text-neutral-300 text-[15px] md:text-base leading-relaxed mt-2">{col.corpo}</p>
           </div>
         ))}
       </div>
@@ -150,7 +150,7 @@ function CaseCard({
           {stack.map((tec) => (
             <span
               key={tec}
-              className="rounded-full border border-neutral-800 px-3 py-1 font-mono text-[11px] text-neutral-400 transition-colors hover:border-neutral-600 hover:text-neutral-200"
+              className="rounded-full border border-neutral-800 px-3 py-1 font-mono text-xs text-neutral-300 transition-colors hover:border-neutral-600 hover:text-neutral-100"
             >
               {tec}
             </span>

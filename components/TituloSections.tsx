@@ -9,13 +9,13 @@ export default function TituloSections({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-xs text-(--cor-secundaria) tracking-wide uppercase font-mono">
+      <span className="text-[13px] text-(--cor-secundaria) tracking-wide uppercase font-mono">
         {subtitulo}
       </span>
-      <h2 className="text-2xl font-bold text-(--cor-primaria) my-4">
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-(--cor-primaria) my-4 max-w-3xl">
         {titulo}
       </h2>
-      <p className="text-md text-(--cor-secundaria) max-w-lg whitespace-pre-line">{paragrafo}</p>
+      <p className="text-base md:text-lg text-(--cor-secundaria) max-w-xl whitespace-pre-line leading-relaxed">{paragrafo}</p>
     </div>
   );
 }

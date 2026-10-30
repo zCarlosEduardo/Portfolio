@@ -4,6 +4,11 @@ import { ChevronDown, ChevronsDown } from "lucide-react";
 import { useState } from "react";
 
 const certificados = [
+  {
+    certificado: "Express.js e APIs REST",
+    empresa: "Udemy",
+    cursos: "em andamento",
+  },
   { certificado: "DB Developer", empresa: "Descomplica", cursos: "160 Horas" },
   {
     certificado: "Arquitetura e Organização de computadores",
@@ -63,34 +68,34 @@ export default function Formacoes() {
       <div>
         <div className="flex flex-wrap gap-2 justify-between border-y border-0 border-neutral-900 py-4">
           <div className="">
-            <span className="ml-3 truncate ">Ciência da Computação </span>
-            <i className="text-xs text-(--cor-secundaria)">
+            <span className=" truncate ">Ciência da Computação </span>
+            <i className="text-[13px] text-(--cor-secundaria)">
               (Concluído – 2026)
             </i>
           </div>
-          <span className="ml-3 text-(--cor-secundaria) text-sm tracking-wide font-mono truncate">
+          <span className=" text-(--cor-secundaria) text-sm tracking-wide font-mono truncate">
             Descomplica Faculdade Digital
           </span>
         </div>
         <div className="flex flex-wrap gap-2 justify-between border-b border-0 border-neutral-900 py-4">
           <div className="">
-            <span className="ml-3">
+            <span className="">
               Análise e Desenvolvimento de Sistemas (Tecnólogo){" "}
             </span>
-            <i className="text-xs text-(--cor-secundaria)">
+            <i className="text-[13px] text-(--cor-secundaria)">
               (previsão dez/2028)
             </i>
           </div>
-          <span className="ml-3 text-(--cor-secundaria) text-sm tracking-wide font-mono truncate">
+          <span className=" text-(--cor-secundaria) text-sm tracking-wide font-mono truncate">
             Descomplica
           </span>
         </div>
-        <div className="flex gap-2 justify-between border-b border-0 border-neutral-900 py-4">
-          <div className="truncate">
-            <span className="ml-3 truncate">
+        <div className="flex flex-wrap gap-2 justify-between border-b border-0 border-neutral-900 py-4">
+          <div>
+            <span className=" truncate">
               Desenvolva aplicações web Acessíveis
             </span>
-            <span className="text-xs text-(--cor-secundaria) tracking-wide font-mono">
+            <span className="text-[13px] text-(--cor-secundaria) tracking-wide font-mono">
               {" "}
               3 cursos
             </span>
@@ -119,10 +124,10 @@ export default function Formacoes() {
               <div className="overflow-hidden">
                 <div className="flex gap-2 justify-between">
                   <div className="min-w-0 flex items-baseline gap-1">
-                    <span className="ml-3 text-neutral-300 truncate">
+                    <span className=" text-neutral-300 truncate">
                       {item.certificado}
                     </span>
-                    <span className="shrink-0 text-xs text-(--cor-secundaria) tracking-wide font-mono">
+                    <span className="shrink-0 text-[13px] text-(--cor-secundaria) tracking-wide font-mono">
                       {item.cursos}
                     </span>
                   </div>

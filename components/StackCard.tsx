@@ -16,6 +16,7 @@ const stack = [
       { nome: "Lovable", nivel: "estudando" },
       { nome: "Replit", nivel: "estudando" },
       { nome: "Prompt engineering", nivel: "estudando" },
+      { nome: "Webhooks / APIs REST", nivel: "producao" },
     ],
   },
   {
@@ -48,11 +49,20 @@ const stack = [
       { nome: "Git / GitHub", nivel: "producao" },
     ],
   },
+  {
+    categoria: "Dados e produto",
+    techs: [
+      { nome: "Power BI", nivel: "producao" },
+      { nome: "DAX", nivel: "producao" },
+      { nome: "Figma", nivel: "producao" },
+      { nome: "Levantamento de requisitos", nivel: "producao" },
+    ],
+  },
 ] satisfies { categoria: string; techs: { nome: string; nivel: Nivel }[] }[];
 
 const nivelStyle: Record<Nivel, string> = {
   producao: "border-green-800 text-green-400",
-  estudando: "rounded-full border-neutral-800 text-neutral-500",
+  estudando: "border-neutral-700 text-neutral-400",
 };
 
 const nivelLabel: Record<Nivel, string> = {
@@ -62,28 +72,28 @@ const nivelLabel: Record<Nivel, string> = {
 
 export default function StackCard() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5 my-8 md:max-w-6xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 my-8">
       {stack.map((grupo) => (
         <div
           key={grupo.categoria}
-          className={`border border-neutral-800 rounded-lg p-5 bg-neutral-900/50 ${grupo.techs.length > 6 ? "md:col-span-3" : ""}`}
+          className={`border border-neutral-800 rounded-lg p-5 bg-neutral-900/50 ${grupo.techs.length > 6 ? "md:col-span-2 xl:col-span-4" : ""}`}
         >
-          <span className="text-xs uppercase ml-4 font-mono tracking-wide text-(--cor-secundaria)">
+          <h3 className="text-[13px] uppercase font-mono tracking-wide text-(--cor-secundaria) mb-2">
             {grupo.categoria}
-          </span>
+          </h3>
           <div
             className={
-              grupo.techs.length > 6 ? "grid sm:grid-cols-2 md:grid-cols-3 gap-x-6" : ""
+              grupo.techs.length > 6 ? "grid sm:grid-cols-2 xl:grid-cols-3 gap-x-6" : ""
             }
           >
             {grupo.techs.map((tech) => (
               <div
                 key={tech.nome}
-                className="flex items-center justify-between border-b border-neutral-800 last:border-b-0 py-2.5 hover:animate-pulse"
+                className="flex items-center justify-between gap-3 border-b border-neutral-800 last:border-b-0 py-2.5"
               >
-                <span className="text-neutral-400 text-md">{tech.nome}</span>
+                <span className="text-neutral-200 text-base">{tech.nome}</span>
                 <span
-                  className={`text-[10px] tracking-wider font-mono border px-2 py-1 rounded-full ${nivelStyle[tech.nivel]}`}
+                  className={`shrink-0 text-xs tracking-wider font-mono border px-2 py-1 rounded-full ${nivelStyle[tech.nivel]}`}
                 >
                   {nivelLabel[tech.nivel]}
                 </span>

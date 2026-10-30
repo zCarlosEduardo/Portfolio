@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 const LINKS = [
   { id: "projetos", label: "projetos" },
+  { id: "skills", label: "skills" },
   { id: "sobre", label: "sobre" },
   { id: "experiencia", label: "experiência" },
-  { id: "skills", label: "skills" },
 ];
 
 export default function TopBar() {
@@ -45,7 +45,7 @@ export default function TopBar() {
         </h2>
 
         <div className="flex gap-6 text-center items-center">
-          <nav className="hidden md:flex gap-6 font-extralight text-(--cor-secundaria)">
+          <nav className="hidden md:flex gap-6 text-(--cor-secundaria)">
             {LINKS.map((item) => (
               <a
                 key={item.id}

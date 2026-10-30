@@ -10,18 +10,18 @@ const ROTEIRO: Linha[] = [
   {
     texto: "carlos-eduardo · dev · automação com IA · goiânia/br",
     digitada: false,
-    cor: "text-stone-500",
+    cor: "text-stone-400",
   },
   { texto: "$ git log --oneline -2", digitada: true },
   {
     texto: "a1f2c3 feat: push energetico",
     digitada: false,
-    cor: "text-stone-500",
+    cor: "text-stone-400",
   },
   {
     texto: "b4d5e6 fix: orderBy + serverTimestamp",
     digitada: false,
-    cor: "text-stone-500",
+    cor: "text-stone-400",
   },
   { texto: "$ status", digitada: true },
   {
@@ -111,21 +111,21 @@ export default function CardsDadosTerminal() {
   }, [started]);
 
   return (
-    <div className="mx-auto grid gap-6 md:grid-cols-[1.15fr_0.85fr]">
-      <div className="bg-neutral-800/40 rounded-xl border border-neutral-800 px-4 py-6 shadow-lg shadow-neutral-950/50">
+    <div className="grid w-full gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="bg-neutral-800/40 rounded-xl border border-neutral-800 px-5 py-6">
         <div className="flex gap-4 text-center">
           <Zap className="h-3.5 w-3.5 text-green-300/50" />
-          <p className="font-mono text-xs uppercase tracking-wider text-neutral-500 mb-4">
+          <h2 className="font-mono text-[13px] uppercase tracking-wider text-(--cor-secundaria) mb-4">
             Meus dados atuais
-          </p>
+          </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
           {informacoesAtuais.map((item) => (
             <div key={item.titulo} className="flex flex-col">
-              <span className="text-xs text-neutral-500 font-mono mb-1 ml-1.5">
+              <span className="text-[13px] text-(--cor-secundaria) font-mono mb-1">
                 {item.titulo}
               </span>
-              <span className="text-sm text-(--cor-primaria)">
+              <span className="text-base text-(--cor-primaria)">
                 {item.descricao}
               </span>
             </div>
@@ -135,17 +135,17 @@ export default function CardsDadosTerminal() {
 
       <div
         ref={terminalRef}
-        className="flex flex-col overflow-hidden rounded-xl border border-stone-800 bg-neutral-900/30 shadow-lg shadow-stone-950/50"
+        className="flex flex-col overflow-hidden rounded-xl border border-stone-800 bg-neutral-900/30"
       >
         <div className="flex items-center gap-1.5 border-b border-stone-800 px-3.5 py-2.5">
           <i className="h-2.5 w-2.5 rounded-full bg-stone-700" />
           <i className="h-2.5 w-2.5 rounded-full bg-stone-800" />
           <i className="h-2.5 w-2.5 rounded-full bg-stone-800" />
-          <span className="ml-2 font-mono text-[11px] text-stone-500">
+          <span className="ml-2 font-mono text-xs text-(--cor-secundaria)">
             carlos@dev ~ zsh
           </span>
         </div>
-        <div className="min-h-42.5 p-4 font-mono text-xs leading-relaxed">
+        <div className="min-h-42.5 p-4 font-mono text-[13px] leading-relaxed">
           {prontas.map((l, i) => (
             <div key={i} className={l.cor ?? ""}>
               {l.texto}

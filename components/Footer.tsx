@@ -26,11 +26,11 @@ const link: LinkItem[] = [
 export default function Footer() {
   const anoAtual = new Date().getFullYear();
   return (
-    <footer className="py-10 flex flex-row gap-12 flex-wrap-reverse items-center justify-center md:justify-between text-center border-t border-neutral-900 lg:px-24 px-2">
-      <p className="text-(--cor-secundaria) text-xs font-mono">
-        © {anoAtual} - Todos os direitos reservados. Carlos Eduardo 😶‍🌫️
+    <footer className="py-10 flex flex-row gap-12 flex-wrap-reverse items-center justify-center md:justify-between text-center border-t border-neutral-900 px-6 md:px-8 lg:px-24">
+      <p className="text-(--cor-secundaria) text-[13px] font-mono">
+        © {anoAtual} Carlos Eduardo Alonso
       </p>
-      <nav className="flex flex-row gap-3 md:gap-6 text-(--cor-secundaria) text-xs tracking-wide font-mono">
+      <nav className="flex flex-row gap-3 md:gap-6 text-(--cor-secundaria) text-[13px] tracking-wide font-mono">
         {link.map((item) => (
           <a
             key={item.descricao}
