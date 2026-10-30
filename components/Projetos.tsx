@@ -350,50 +350,56 @@ export default function Projetos() {
       <CaseCard
         cor="#4ade80"
         icone={Coins}
-        categoria="Integração · Next + Django"
+        categoria="Ferramenta interna · Next.js + Prisma"
         nome="Sys Coin v1"
-        link={{
-          href: "https://github.com/zCarlosEduardo/coin-sys",
-          label: "ver no github",
-        }}
+        selo="Ferramenta interna · código privado"
         contexto={
           <>
             <strong className="text-neutral-200">
-              Módulo de gamificação em Next.js integrado a um ERP Django
+              Sistema de recompensas interno da ARX:
             </strong>{" "}
-            que eu não controlava — cenário comum em empresa: seu código precisa
-            conviver com o sistema legado de outra equipe.
+            gestores lançam metas e coins por funcionário, coins viram pontos e
+            pontos viram produtos. Onze departamentos, ranking, catálogo e
+            dashboard.
           </>
         }
         desafio={
           <>
-            Compartilhar autenticação e permissões com um backend Django de
-            terceiro, sem duplicar usuários nem regras de acesso.
+            Toda mudança de saldo precisava ser rastreável: quem lançou, quanto,
+            com qual multiplicador e o que foi resgatado, sem apagar histórico.
           </>
         }
         decisao={
           <>
-            Consumir a API REST (
-            <strong className="text-neutral-200">Django REST Framework</strong>)
-            com auth unificada via{" "}
-            <strong className="text-neutral-200">JWT</strong>, e containerizar
-            tudo com Docker para o deploy ser reproduzível.
+            <strong className="text-neutral-200">Server Actions</strong> com
+            Prisma e PostgreSQL. Cada ajuste gera um log com o multiplicador
+            usado, e resgate e débito de coins rodam na{" "}
+            <strong className="text-neutral-200">mesma transação</strong>.
+            Exclusão lógica em funcionários e produtos.
           </>
         }
         resultado={
           <>
-            Gestão de departamentos com filtros e estatísticas — e uma lição
-            prática de{" "}
-            <strong className="text-neutral-200">case-sensitivity</strong> do
-            filesystem Linux que só o deploy ensina.
+            Em produção na empresa, com deploy em Docker. Relatórios por
+            departamento em Excel e gráficos de coins, pontos e metas. Serviu de
+            base para o <strong className="text-neutral-200">Await</strong>.
           </>
         }
-        stack={["Next.js", "Django REST", "JWT", "Docker", "Linux"]}
+        stack={[
+          "Next.js",
+          "TypeScript",
+          "Server Actions",
+          "Prisma",
+          "PostgreSQL",
+          "Chart.js",
+          "xlsx",
+          "Docker",
+        ]}
         codigo={
           <VideoDemo
-            src="/coin-sys.mp4"
+            src="/arx-coin.mp4"
             arquivo="sys-coin · demo"
-            label="Telas do Sys Coin: como funciona, departamentos, roleta de prêmios e gestão de resgates"
+            label="Telas do Sys Coin: ranking, departamento, lançamento de coins com multiplicador, dashboard e produtos"
           />
         }
       />
