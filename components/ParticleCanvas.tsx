@@ -155,13 +155,22 @@ export default function ParticleCanvas({ text = "Carlos Eduardo" }: { text?: str
     };
     const onScroll = () => {
       // progresso 0→1: "quantos % de 70% da altura do hero eu já rolei?"
-      const hero = canvas.closest("header");
+      // o hero é uma <section>; innerHeight muda com a barra do celular
+      const hero = canvas.closest("section");
       const heroH = hero ? hero.offsetHeight : window.innerHeight;
       scatter = Math.min(window.scrollY / (heroH * 0.7), 1);
     };
+    // no celular, a barra de endereço some/volta ao rolar e dispara resize só
+    // de altura; remontar aí embaralhava as partículas. A altura do canvas é
+    // fixa no CSS, então só a largura importa.
+    let ultimaLargura = canvas.clientWidth;
     const onResize = () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(sampleText, 200);
+      resizeTimer = setTimeout(() => {
+        if (canvas.clientWidth === ultimaLargura) return;
+        ultimaLargura = canvas.clientWidth;
+        sampleText();
+      }, 200);
     };
 
     canvas.addEventListener("pointermove", onMove);
