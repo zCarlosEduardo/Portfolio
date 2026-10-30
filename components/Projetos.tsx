@@ -24,18 +24,28 @@ function Janela({
   );
 }
 
-function CodeMock({
+// demo em vídeo (dados fictícios); fontes em ../hub-glpi-video e ../portfolio-videos (HyperFrames)
+function VideoDemo({
+  src,
   arquivo,
-  children,
+  label,
 }: {
+  src: string;
   arquivo: string;
-  children: ReactNode;
+  label: string;
 }) {
   return (
     <Janela arquivo={arquivo}>
-      <pre className="overflow-x-auto p-4 font-mono text-[11px] leading-relaxed text-neutral-400">
-        <code>{children}</code>
-      </pre>
+      <video
+        src={src}
+        poster={src.replace(".mp4", "-poster.jpg")}
+        autoPlay
+        loop
+        muted
+        playsInline
+        aria-label={label}
+        className="block w-full aspect-video"
+      />
     </Janela>
   );
 }
@@ -152,14 +162,7 @@ function CaseCard({
 }
 
 /* ============================================================
-   Destaque: pinta a parte importante do snippet com o --acc
-   ============================================================ */
-function Hl({ children }: { children: ReactNode }) {
-  return <span className="[color:var(--acc)]">{children}</span>;
-}
-
-/* ============================================================
-   A seção: 4 projetos, cada um com seu código real
+   A seção: 4 projetos, cada um com sua demo
    ============================================================ */
 export default function Projetos() {
   return (
@@ -218,19 +221,11 @@ export default function Projetos() {
           "Docker",
         ]}
         codigo={
-          <Janela arquivo="hub-glpi · fluxo">
-            {/* dados fictícios; fonte em ../hub-glpi-video (HyperFrames) */}
-            <video
-              src="/hub-glpi.mp4"
-              poster="/hub-glpi-poster.jpg"
-              autoPlay
-              loop
-              muted
-              playsInline
-              aria-label="Animação do fluxo: o chamado chega no GLPI, o hub valida, executa a automação e resolve o chamado"
-              className="block w-full aspect-video"
-            />
-          </Janela>
+          <VideoDemo
+            src="/hub-glpi.mp4"
+            arquivo="hub-glpi · fluxo"
+            label="Animação do fluxo: o chamado chega no GLPI, o hub valida, executa a automação e resolve o chamado"
+          />
         }
       />
 
@@ -240,7 +235,7 @@ export default function Projetos() {
         categoria="Sistema de Gamificação"
         nome="Await"
         link={{
-          href: "https://github.com/zCarlosEduardo",
+          href: "https://github.com/zCarlosEduardo/sistema-gamificacao",
           label: "ver no github",
         }}
         contexto={
@@ -267,7 +262,7 @@ export default function Projetos() {
             <strong className="text-neutral-200">
               Realtime com SSE + Redis pub/sub
             </strong>{" "}
-            em vez de WebSocket, e Server Actions com validação Zod.
+            em vez de WebSocket, e API em NestJS com validação Zod.
           </>
         }
         resultado={
@@ -278,94 +273,77 @@ export default function Projetos() {
             engenharia.
           </>
         }
-        stack={["Next.js", "Drizzle", "PostgreSQL", "Redis", "SSE", "Zod"]}
+        stack={[
+          "Next.js",
+          "NestJS",
+          "Drizzle",
+          "PostgreSQL",
+          "Redis",
+          "SSE",
+          "Better Auth",
+          "Docker",
+        ]}
         codigo={
-          <CodeMock arquivo="metas.service.ts">
-            {`// toda query nasce presa ao tenant
-export async function listarMetas(
-  tenantId: string
-) {
-  return db
-    .select()
-    .from(metasDiarias)
-    .where(`}
-            <Hl>{`eq(metasDiarias.tenantId, tenantId)`}</Hl>
-            {`)
-    .orderBy(desc(metasDiarias.criadaEm));
-}`}
-          </CodeMock>
+          <VideoDemo
+            src="/await.mp4"
+            arquivo="await · demo"
+            label="Telas do Await: dashboard, aprovação de metas, loja de resgates e equipes"
+          />
         }
       />
 
       <CaseCard
-        cor="#f472b6"
+        cor="#f97352"
         icone={HeartHandshake}
-        categoria="PWA · App para casais"
-        nome="Pega Aí"
-        link={{
-          href: "https://pega-ai-eight.vercel.app",
-          label: "ver em produção",
-        }}
+        categoria="App mobile · Expo + React Native"
+        nome="Nozes"
+        selo="Em desenvolvimento · código privado"
         contexto={
           <>
             <strong className="text-neutral-200">
-              PWA mobile-first para casais organizarem a rotina juntos:
+              App de casal para organizar a rotina a dois:
             </strong>{" "}
-            listas compartilhadas, calendário com eventos recorrentes,
-            atribuição de tarefas por pessoa e notificações push. Em produção e
-            com uso diário real.
+            listas com prazo, tarefas, calendário de datas importantes e cor
+            própria para cada pessoa. Uma base só para iOS, Android e web.
           </>
         }
         desafio={
           <>
-            Sincronização em tempo real entre dois usuários, push notifications
-            em PWA (incluindo as limitações do iOS) e custo de infraestrutura
-            zero.
+            Construir as telas antes do backend existir, sem retrabalho quando a
+            API real chegar.
           </>
         }
         decisao={
           <>
-            Migração completa de Supabase para{" "}
-            <strong className="text-neutral-200">Firebase</strong> (Firestore +
-            Auth) e um serviço Node.js standalone de push com{" "}
-            <strong className="text-neutral-200">
-              web-push + firebase-admin
-            </strong>{" "}
-            acionado por cron.
+            Camadas por feature (domain, data, presentation). A UI depende só
+            da <strong className="text-neutral-200">interface do repositório</strong>;
+            hoje um banco falso em memória cumpre o contrato.{" "}
+            <strong className="text-neutral-200">TanStack Query</strong> nos
+            dados e NativeWind no tema.
           </>
         }
         resultado={
           <>
-            App instalável, realtime estável e notificações agendadas
-            funcionando sem servidor pago.{" "}
-            <strong className="text-neutral-200">Zero downtime</strong> desde a
-            migração.
+            Trocar o mock pela API não toca nenhuma tela. Regras de negócio
+            puras com smoke tests executáveis e tema{" "}
+            <strong className="text-neutral-200">claro, escuro e preto</strong>.
           </>
         }
         stack={[
-          "Next.js",
+          "Expo",
+          "React Native",
           "TypeScript",
-          "Firebase",
-          "Firestore",
-          "Service Worker",
-          "web-push",
+          "expo-router",
+          "TanStack Query",
+          "NativeWind",
+          "Reanimated",
         ]}
         codigo={
-          <CodeMock arquivo="notify.mjs">
-            {`// serviço standalone de push (cron)
-const inscritos = await db
-  .collection("pushSubscriptions")
-  .get();
-
-for (const doc of inscritos.docs) {
-  `}
-            <Hl>{`await webpush.sendNotification(
-    doc.data().subscription,
-    JSON.stringify({ title, body })
-  );`}</Hl>
-            {`
-}`}
-          </CodeMock>
+          <VideoDemo
+            src="/nozes.mp4"
+            arquivo="nozes · demo"
+            label="Telas do Nozes: listas, tarefas, calendário do casal e tema escuro"
+          />
         }
       />
 
@@ -375,7 +353,7 @@ for (const doc of inscritos.docs) {
         categoria="Integração · Next + Django"
         nome="Sys Coin v1"
         link={{
-          href: "https://github.com/zCarlosEduardo",
+          href: "https://github.com/zCarlosEduardo/coin-sys",
           label: "ver no github",
         }}
         contexto={
@@ -412,22 +390,11 @@ for (const doc of inscritos.docs) {
         }
         stack={["Next.js", "Django REST", "JWT", "Docker", "Linux"]}
         codigo={
-          <CodeMock arquivo="api.ts">
-            {`// identidade vem SEMPRE do Django
-export async function apiDjango(
-  rota: string, token: string
-) {
-  const res = await fetch(BASE + rota, {
-    headers: {
-      `}
-            <Hl>{`Authorization: "Bearer " + token,`}</Hl>
-            {`
-    },
-  });
-  if (res.status === 401) renovarToken();
-  return res.json();
-}`}
-          </CodeMock>
+          <VideoDemo
+            src="/coin-sys.mp4"
+            arquivo="sys-coin · demo"
+            label="Telas do Sys Coin: como funciona, departamentos, roleta de prêmios e gestão de resgates"
+          />
         }
       />
     </>
