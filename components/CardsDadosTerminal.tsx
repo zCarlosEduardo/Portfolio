@@ -34,7 +34,7 @@ const ROTEIRO: Linha[] = [
 const informacoesAtuais = [
   {
     titulo: "Cargo atual",
-    descricao: "Analista de Suporte @ ARX Administradora",
+    descricao: "Analista de Suporte e Desenvolvimento @ ARX Administradora",
   },
   {
     titulo: "Stack principal",

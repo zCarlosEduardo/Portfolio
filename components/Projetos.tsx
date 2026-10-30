@@ -1,8 +1,8 @@
 import type { CSSProperties, ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
-import { AlarmClock, HeartHandshake, Car, Coins, Workflow } from "lucide-react";
+import { AlarmClock, HeartHandshake, Coins, Workflow } from "lucide-react";
 
-function CodeMock({
+function Janela({
   arquivo,
   children,
 }: {
@@ -19,10 +19,24 @@ function CodeMock({
           {arquivo}
         </span>
       </div>
+      {children}
+    </div>
+  );
+}
+
+function CodeMock({
+  arquivo,
+  children,
+}: {
+  arquivo: string;
+  children: ReactNode;
+}) {
+  return (
+    <Janela arquivo={arquivo}>
       <pre className="overflow-x-auto p-4 font-mono text-[11px] leading-relaxed text-neutral-400">
         <code>{children}</code>
       </pre>
-    </div>
+    </Janela>
   );
 }
 
@@ -145,7 +159,7 @@ function Hl({ children }: { children: ReactNode }) {
 }
 
 /* ============================================================
-   A seção: 5 projetos, cada um com seu código real
+   A seção: 4 projetos, cada um com seu código real
    ============================================================ */
 export default function Projetos() {
   return (
@@ -177,7 +191,9 @@ export default function Projetos() {
             Hub integrado à{" "}
             <strong className="text-neutral-200">API do GLPI</strong>: valida o
             chamado, verifica se existe automação criada pela equipe para aquele
-            caso e executa o fluxo automaticamente.
+            caso e executa o fluxo automaticamente. Uma{" "}
+            <strong className="text-neutral-200">IA local</strong> confere o
+            tipo do chamado antes da execução.
           </>
         }
         resultado={
@@ -191,20 +207,30 @@ export default function Projetos() {
             economizadas e zero execuções manuais.
           </>
         }
-        // TODO: completar com a stack real do hub
-        stack={["API REST do GLPI", "Automação"]}
+        stack={[
+          "Node.js",
+          "Express",
+          "PostgreSQL",
+          "API do GLPI",
+          "Puppeteer",
+          "Playwright",
+          "Ollama (IA local)",
+          "Docker",
+        ]}
         codigo={
-          // TODO: trocar por screenshot anonimizado do hub, se quiser
-          <CodeMock arquivo="fluxo.md">
-            {`# fluxo simplificado, por chamado
-1. chamado novo chega no GLPI
-2. hub valida os dados do chamado
-3. existe automação para o caso?
-   `}
-            <Hl>{`sim → executa o fluxo e atualiza o chamado`}</Hl>
-            {`
-   não → segue para atendimento`}
-          </CodeMock>
+          <Janela arquivo="hub-glpi · fluxo">
+            {/* dados fictícios; fonte em ../hub-glpi-video (HyperFrames) */}
+            <video
+              src="/hub-glpi.mp4"
+              poster="/hub-glpi-poster.jpg"
+              autoPlay
+              loop
+              muted
+              playsInline
+              aria-label="Animação do fluxo: o chamado chega no GLPI, o hub valida, executa a automação e resolve o chamado"
+              className="block w-full aspect-video"
+            />
+          </Janela>
         }
       />
 
@@ -400,60 +426,6 @@ export async function apiDjango(
   });
   if (res.status === 401) renovarToken();
   return res.json();
-}`}
-          </CodeMock>
-        }
-      />
-
-      <CaseCard
-        cor="#60a5fa"
-        icone={Car}
-        categoria="Automação · Go + Playwright"
-        nome="Automação de ERP em Go"
-        contexto={
-          <>
-            <strong className="text-neutral-200">
-              Automação em Go + Playwright para ERP de gestão:
-            </strong>
-            lê planilhas .xlsx com centenas de registros de cotas de veículos e
-            atualiza os valores no sistema um a um, com validação antes de cada
-            salvamento. O que tomava horas de trabalho manual agora roda
-            sozinho.
-          </>
-        }
-        desafio={
-          <>
-            Entender como o ERP renderizava os dados por trás (DataTables
-            carregando via AJAX, timing imprevisível) e garantir que a automação
-            jamais salvasse valor errado — erro monetário em produção não tem
-            Ctrl+Z.
-          </>
-        }
-        decisao={
-          <>
-            Go com Playwright para automação de browser, parsing do .xlsx com
-            validação de formato monetário e um cross-check obrigatório: antes
-            de salvar, o script relê o valor na tela e compara com a planilha.
-            Divergiu, aborta e registra no log.
-          </>
-        }
-        resultado={
-          <>
-            Tarefa de horas virou processo automático e auditável. De quebra:
-            bug de BOM na planilha resolvido e a lição de que automação de UI é
-            20% código e 80% esperar o AJAX certo.
-          </>
-        }
-        stack={["Go", "Playwright", "xlsx"]}
-        codigo={
-          <CodeMock arquivo="kpis.ts">
-            {`// cross-check antes de salvar
-  `}
-            <Hl>{`valorTela, _ := page.Locator("#valorCota").InputValue()`}</Hl>
-            {`
-if normalizar(valorTela) != normalizar(valorPlanilha) {
-    log.Printf("divergência na cota %s — abortando", id)
-    continue
 }`}
           </CodeMock>
         }
