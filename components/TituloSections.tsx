@@ -15,7 +15,7 @@ export default function TituloSections({
       <h2 className="text-2xl font-bold text-(--cor-primaria) my-4">
         {titulo}
       </h2>
-      <p className="text-md text-(--cor-secundaria) max-w-lg">{paragrafo}</p>
+      <p className="text-md text-(--cor-secundaria) max-w-lg whitespace-pre-line">{paragrafo}</p>
     </div>
   );
 }

@@ -44,18 +44,25 @@ export default function Home() {
           </div>
           <ParticleCanvas text="Carlos Eduardo" />
           <p className="text-(--cor-secundaria) text-md md:text-lg max-w-lg ">
-            Full stack developer que{" "}
+            Desenvolvedor que{" "}
             <span className="text-(--cor-primaria)">
-              tira produto do papel e coloca em produção
-            </span>{" "}
-            do schema do banco ao deploy. Next.js, TypeScript e PostgreSQL, com
-            atenção real a design e experiência do usuário.
+              automatiza processos com IA e coloca em produção
+            </span>
+            . Ferramentas internas, integrações e bots que economizam horas
+            reais de trabalho.
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-4 md:gap-6">
             <Button href="#projetos">Ver projetos</Button>
 
             <Button href="#contato" variant="secondary">
               Entrar em contato
+            </Button>
+            <Button
+              href="/curriculo-carlos-eduardo-alonso.pdf"
+              download
+              variant="secondary"
+            >
+              Baixar currículo
             </Button>
           </div>
         </div>
@@ -76,7 +83,7 @@ export default function Home() {
           <TituloSections
             titulo="Não é lista de tutorial. É produto com decisão técnica."
             subtitulo="Projetos"
-            paragrafo="Cada projeto abaixo passou por problema real, escolha de arquitetura, bug difícil e refatoração honesta. O formato é o mesmo que uso no trabalho: contexto, desafio, decisão, resultado."
+            paragrafo="Cada projeto resolveu um problema real: automação em produção, ferramenta interna ou produto com usuário. O formato é o mesmo que uso no trabalho: contexto, desafio, decisão, resultado."
           />
           <Projetos />
         </section>
@@ -95,11 +102,10 @@ export default function Home() {
         <section id="sobre" className="pt-20">
           <TituloSections
             titulo=" Sobre mim"
-            subtitulo="Conheça me"
-            paragrafo='Do chamado de suporte ao deploy em produção
-Sou o Carlos, Cadu pros íntimos desenvolvedor full stack em Goiânia. Entrei em tecnologia pela porta do suporte: atendendo chamado em rede de supermercado, aprendendo na marra a traduzir "o sistema não funciona" em problema técnico de verdade. Isso mudou como eu programo até hoje: antes de escrever qualquer linha, quero entender quem vai usar e onde dói.
-Na ARX entrei pra implantar sistemas e virei dev por iniciativa própria comecei automatizando uma tarefa que tomava horas do time, e a automação virou função. Hoje construo produto de ponta a ponta com Next.js, TypeScript e PostgreSQL, e mantenho apps em produção com usuários reais, do tipo que reclama na hora quando algo quebra.
-Fora do código, sou o cara que desmonta as coisas pra entender: eletrônica, robótica, carrinho RC de drift. O padrão é sempre o mesmo aprendo fazendo, quebro, conserto, documento. Júnior no crachá, mentalidade de dono do problema.'
+            subtitulo="Conheça-me"
+            paragrafo={`Comecei em TI pelo suporte. Atendendo chamado em rede de supermercado, aprendi a transformar "o sistema não funciona" em problema técnico. Depois vieram infraestrutura e implantação de sistemas.
+
+Na ARX, passei a automatizar as tarefas que tomavam horas do time. A automação virou função: hoje construo ferramentas internas com Next.js, n8n, Playwright e IA. Meu foco é achar o trabalho repetitivo e tirar ele das mãos das pessoas.`}
           />
         </section>
 
@@ -108,7 +114,7 @@ Fora do código, sou o cara que desmonta as coisas pra entender: eletrônica, ro
           <TituloSections
             titulo="De suporte a desenvolvimento"
             subtitulo="Experiência"
-            paragrafo="Entrei em tecnologia resolvendo chamado de suporte aquele tipo de trabalho que te ensina a ouvir o problema real do usuário antes de qualquer linha de código. Foi ali que decidi migrar pra desenvolvimento, e hoje isso pesa a favor: enxergo o sistema pelos dois lados, de quem usa e de quem constrói."
+            paragrafo="Comecei no suporte, ouvindo o problema real do usuário. Migrei para desenvolvimento e hoje automatizo processos. Enxergo o sistema pelos dois lados: de quem usa e de quem constrói."
           />
           <Experiencias />
           <div className="my-4 ml-3 ">
@@ -138,10 +144,10 @@ Fora do código, sou o cara que desmonta as coisas pra entender: eletrônica, ro
               Procurando alguém que aprende rápido e entrega de verdade?
             </h2>
             <p className="py-6 max-w-lg text-(--cor-secundaria)">
-              Respondo rápido, converso sem enrolação e chego na entrevista com
-              código em produção pra mostrar não só slides.
+              Respondo rápido e converso de forma direta. Na entrevista, mostro
+              ferramentas em produção, não slides.
             </p>
-            <div className="flex gap-8">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8">
               <Button href="https://wa.me/5562983263038">
                 Mandar mensagem
               </Button>
@@ -153,14 +159,30 @@ Fora do código, sou o cara que desmonta as coisas pra entender: eletrônica, ro
               >
                 Ver GitHub
               </Button>
+              <Button
+                href="/curriculo-carlos-eduardo-alonso.pdf"
+                download
+                variant="secondary"
+              >
+                Baixar currículo
+              </Button>
             </div>
             <span className="mt-8 text-(--cor-secundaria) text-xs">
               ou direto:{" "}
               <a
-                href="mailto:contato.cseduardo@gmail.com"
+                href="mailto:cseduardoalonso@gmail.com"
                 className="border-b border-neutral-700 text-neutral-400 hover:animate-pulse"
               >
-                contato.cseduardo@gmail.com
+                cseduardoalonso@gmail.com
+              </a>{" "}
+              ·{" "}
+              <a
+                href="https://www.linkedin.com/in/zcarloseduardo/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-b border-neutral-700 text-neutral-400 hover:animate-pulse"
+              >
+                linkedin
               </a>
             </span>
           </div>

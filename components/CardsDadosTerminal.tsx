@@ -8,7 +8,7 @@ type Linha = { texto: string; digitada: boolean; cor?: string };
 const ROTEIRO: Linha[] = [
   { texto: "$ whoami", digitada: true },
   {
-    texto: "carlos-eduardo · full stack dev · goiânia/br",
+    texto: "carlos-eduardo · dev · automação com IA · goiânia/br",
     digitada: false,
     cor: "text-stone-500",
   },
@@ -34,19 +34,23 @@ const ROTEIRO: Linha[] = [
 const informacoesAtuais = [
   {
     titulo: "Cargo atual",
-    descricao: "Auxiliar Administrativo · ARX Administradora",
+    descricao: "Analista de Suporte @ ARX Administradora",
   },
   {
     titulo: "Stack principal",
     descricao: "Next.js · JavaScript · PostgreSQL",
   },
-  { titulo: "Formação", descricao: "Ciência da Computação (cursando)" },
   {
-    titulo: "Diferencial",
-    descricao: "Vim resolver o seu problema.",
+    titulo: "Formação",
+    descricao:
+      "Bacharel em Ciência da Computação (2026) · cursando ADS (previsão dez/2028)",
   },
-  { titulo: "Trajetória", descricao: "Suporte → Implantação → dev" },
-  { titulo: "Contato", descricao: "contato.cseduardo@gmail.com" },
+  {
+    titulo: "Foco",
+    descricao: "Automação de processos com IA",
+  },
+  { titulo: "Trajetória", descricao: "Suporte → Dev → Automação com IA" },
+  { titulo: "Contato", descricao: "cseduardoalonso@gmail.com" },
 ];
 
 export default function CardsDadosTerminal() {

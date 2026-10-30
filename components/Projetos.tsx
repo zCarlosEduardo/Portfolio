@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
-import { AlarmClock, HeartHandshake, Car, Coins } from "lucide-react";
+import { AlarmClock, HeartHandshake, Car, Coins, Workflow } from "lucide-react";
 
 function CodeMock({
   arquivo,
@@ -35,6 +35,7 @@ type CaseCardProps = {
   categoria: string;
   nome: string;
   link?: { href: string; label: string };
+  selo?: string;
   contexto: ReactNode;
   desafio: ReactNode;
   decisao: ReactNode;
@@ -49,6 +50,7 @@ function CaseCard({
   categoria,
   nome,
   link,
+  selo,
   contexto,
   desafio,
   decisao,
@@ -83,6 +85,11 @@ function CaseCard({
           >
             {link.label}
           </a>
+        )}
+        {selo && (
+          <span className="border border-neutral-800 rounded-lg bg-neutral-950/50 py-2 px-4 text-xs font-mono text-(--cor-secundaria) tracking-wide">
+            {selo}
+          </span>
         )}
       </div>
 
@@ -138,11 +145,132 @@ function Hl({ children }: { children: ReactNode }) {
 }
 
 /* ============================================================
-   A seção: 4 projetos, cada um com seu código real
+   A seção: 5 projetos, cada um com seu código real
    ============================================================ */
 export default function Projetos() {
   return (
     <>
+      <CaseCard
+        cor="#a78bfa"
+        icone={Workflow}
+        categoria="Automação · API do GLPI"
+        nome="Hub de Automações GLPI"
+        selo="Ferramenta interna · código privado"
+        contexto={
+          <>
+            <strong className="text-neutral-200">
+              Hub que executa sozinho as tarefas repetitivas do suporte:
+            </strong>{" "}
+            a equipe da ARX gastava tempo executando à mão pedidos que chegavam
+            por chamado no GLPI. Hoje o hub resolve esses casos sem ninguém
+            encostar.
+          </>
+        }
+        desafio={
+          <>
+            Identificar automaticamente quais chamados já tinham automação
+            pronta e executá-las sem intervenção humana.
+          </>
+        }
+        decisao={
+          <>
+            Hub integrado à{" "}
+            <strong className="text-neutral-200">API do GLPI</strong>: valida o
+            chamado, verifica se existe automação criada pela equipe para aquele
+            caso e executa o fluxo automaticamente.
+          </>
+        }
+        resultado={
+          <>
+            Em produção.{" "}
+            <strong className="text-neutral-200">1min53s</strong> de tempo
+            médio por chamado,{" "}
+            <strong className="text-neutral-200">
+              mais de 13h de trabalho manual
+            </strong>{" "}
+            economizadas e zero execuções manuais.
+          </>
+        }
+        // TODO: completar com a stack real do hub
+        stack={["API REST do GLPI", "Automação"]}
+        codigo={
+          // TODO: trocar por screenshot anonimizado do hub, se quiser
+          <CodeMock arquivo="fluxo.md">
+            {`# fluxo simplificado, por chamado
+1. chamado novo chega no GLPI
+2. hub valida os dados do chamado
+3. existe automação para o caso?
+   `}
+            <Hl>{`sim → executa o fluxo e atualiza o chamado`}</Hl>
+            {`
+   não → segue para atendimento`}
+          </CodeMock>
+        }
+      />
+
+      <CaseCard
+        cor="#fbbf24"
+        icone={AlarmClock}
+        categoria="Sistema de Gamificação"
+        nome="Await"
+        link={{
+          href: "https://github.com/zCarlosEduardo",
+          label: "ver no github",
+        }}
+        contexto={
+          <>
+            <strong className="text-neutral-200">
+              SaaS multitenant de gamificação corporativa:
+            </strong>{" "}
+            metas diárias por colaborador, roleta de moedas, marketplace de
+            pontos e leaderboard. Várias empresas na mesma base, com isolamento
+            total de dados entre elas.
+          </>
+        }
+        desafio={
+          <>
+            Multitenancy seguro (um tenant jamais pode ver dados de outro) e
+            atualizações em tempo real no leaderboard sem estourar custo.
+          </>
+        }
+        decisao={
+          <>
+            Reescrever a v2 do zero com{" "}
+            <strong className="text-neutral-200">Drizzle</strong>, garantindo o
+            isolamento na camada de dados antes de qualquer UI.{" "}
+            <strong className="text-neutral-200">
+              Realtime com SSE + Redis pub/sub
+            </strong>{" "}
+            em vez de WebSocket, e Server Actions com validação Zod.
+          </>
+        }
+        resultado={
+          <>
+            Arquitetura mais simples que a v1, com um{" "}
+            <strong className="text-neutral-200">documento de handoff</strong>{" "}
+            registrando cada decisão — saber quando recomeçar também é
+            engenharia.
+          </>
+        }
+        stack={["Next.js", "Drizzle", "PostgreSQL", "Redis", "SSE", "Zod"]}
+        codigo={
+          <CodeMock arquivo="metas.service.ts">
+            {`// toda query nasce presa ao tenant
+export async function listarMetas(
+  tenantId: string
+) {
+  return db
+    .select()
+    .from(metasDiarias)
+    .where(`}
+            <Hl>{`eq(metasDiarias.tenantId, tenantId)`}</Hl>
+            {`)
+    .orderBy(desc(metasDiarias.criadaEm));
+}`}
+          </CodeMock>
+        }
+      />
+
       <CaseCard
         cor="#f472b6"
         icone={HeartHandshake}
@@ -216,123 +344,6 @@ for (const doc of inscritos.docs) {
       />
 
       <CaseCard
-        cor="#fbbf24"
-        icone={AlarmClock}
-        categoria="Sistema de Gamificação"
-        nome="Await"
-        link={{
-          href: "https://github.com/zCarlosEduardo",
-          label: "ver no github",
-        }}
-        contexto={
-          <>
-            <strong className="text-neutral-200">
-              SaaS multitenant de gamificação corporativa:
-            </strong>{" "}
-            metas diárias por colaborador, roleta de moedas, marketplace de
-            pontos e leaderboard. Várias empresas na mesma base, com isolamento
-            total de dados entre elas.
-          </>
-        }
-        desafio={
-          <>
-            Multitenancy seguro (um tenant jamais pode ver dados de outro) e
-            atualizações em tempo real no leaderboard sem estourar custo.
-          </>
-        }
-        decisao={
-          <>
-            Reescrever a v2 do zero com{" "}
-            <strong className="text-neutral-200">Drizzle</strong>, garantindo o
-            isolamento na camada de dados antes de qualquer UI.{" "}
-            <strong className="text-neutral-200">
-              Realtime com SSE + Redis pub/sub
-            </strong>{" "}
-            em vez de WebSocket, e Server Actions com validação Zod.
-          </>
-        }
-        resultado={
-          <>
-            Arquitetura mais simples que a v1, com um{" "}
-            <strong className="text-neutral-200">documento de handoff</strong>{" "}
-            registrando cada decisão — saber quando recomeçar também é
-            engenharia.
-          </>
-        }
-        stack={["Next.js", "Drizzle", "PostgreSQL", "Redis", "SSE", "Zod"]}
-        codigo={
-          <CodeMock arquivo="metas.service.ts">
-            {`// toda query nasce presa ao tenant
-export async function listarMetas(
-  tenantId: string
-) {
-  return db
-    .select()
-    .from(metasDiarias)
-    .where(`}
-            <Hl>{`eq(metasDiarias.tenantId, tenantId)`}</Hl>
-            {`)
-    .orderBy(desc(metasDiarias.criadaEm));
-}`}
-          </CodeMock>
-        }
-      />
-
-      <CaseCard
-        cor="#60a5fa"
-        icone={Car}
-        categoria="Automação · Go + Playwright"
-        nome="Automação de ERP em Go"
-        contexto={
-          <>
-            <strong className="text-neutral-200">
-              Automação em Go + Playwright para ERP de gestão:
-            </strong>
-            lê planilhas .xlsx com centenas de registros de cotas de veículos e
-            atualiza os valores no sistema um a um, com validação antes de cada
-            salvamento. O que tomava horas de trabalho manual agora roda
-            sozinho.
-          </>
-        }
-        desafio={
-          <>
-            Entender como o ERP renderizava os dados por trás (DataTables
-            carregando via AJAX, timing imprevisível) e garantir que a automação
-            jamais salvasse valor errado — erro monetário em produção não tem
-            Ctrl+Z.
-          </>
-        }
-        decisao={
-          <>
-            Go com Playwright para automação de browser, parsing do .xlsx com
-            validação de formato monetário e um cross-check obrigatório: antes
-            de salvar, o script relê o valor na tela e compara com a planilha.
-            Divergiu, aborta e registra no log.
-          </>
-        }
-        resultado={
-          <>
-            Tarefa de horas virou processo automático e auditável. De quebra:
-            bug de BOM na planilha resolvido e a lição de que automação de UI é
-            20% código e 80% esperar o AJAX certo.
-          </>
-        }
-        stack={["Go", "Playwright", "xlsx"]}
-        codigo={
-          <CodeMock arquivo="kpis.ts">
-            {`// cross-check antes de salvar
-  `}
-            <Hl>{`valorTela, _ := page.Locator("#valorCota").InputValue()`}</Hl>
-            {`
-if normalizar(valorTela) != normalizar(valorPlanilha) {
-    log.Printf("divergência na cota %s — abortando", id)
-    continue
-}`}
-          </CodeMock>
-        }
-      />
-
-      <CaseCard
         cor="#4ade80"
         icone={Coins}
         categoria="Integração · Next + Django"
@@ -389,6 +400,60 @@ export async function apiDjango(
   });
   if (res.status === 401) renovarToken();
   return res.json();
+}`}
+          </CodeMock>
+        }
+      />
+
+      <CaseCard
+        cor="#60a5fa"
+        icone={Car}
+        categoria="Automação · Go + Playwright"
+        nome="Automação de ERP em Go"
+        contexto={
+          <>
+            <strong className="text-neutral-200">
+              Automação em Go + Playwright para ERP de gestão:
+            </strong>
+            lê planilhas .xlsx com centenas de registros de cotas de veículos e
+            atualiza os valores no sistema um a um, com validação antes de cada
+            salvamento. O que tomava horas de trabalho manual agora roda
+            sozinho.
+          </>
+        }
+        desafio={
+          <>
+            Entender como o ERP renderizava os dados por trás (DataTables
+            carregando via AJAX, timing imprevisível) e garantir que a automação
+            jamais salvasse valor errado — erro monetário em produção não tem
+            Ctrl+Z.
+          </>
+        }
+        decisao={
+          <>
+            Go com Playwright para automação de browser, parsing do .xlsx com
+            validação de formato monetário e um cross-check obrigatório: antes
+            de salvar, o script relê o valor na tela e compara com a planilha.
+            Divergiu, aborta e registra no log.
+          </>
+        }
+        resultado={
+          <>
+            Tarefa de horas virou processo automático e auditável. De quebra:
+            bug de BOM na planilha resolvido e a lição de que automação de UI é
+            20% código e 80% esperar o AJAX certo.
+          </>
+        }
+        stack={["Go", "Playwright", "xlsx"]}
+        codigo={
+          <CodeMock arquivo="kpis.ts">
+            {`// cross-check antes de salvar
+  `}
+            <Hl>{`valorTela, _ := page.Locator("#valorCota").InputValue()`}</Hl>
+            {`
+if normalizar(valorTela) != normalizar(valorPlanilha) {
+    log.Printf("divergência na cota %s — abortando", id)
+    continue
 }`}
           </CodeMock>
         }

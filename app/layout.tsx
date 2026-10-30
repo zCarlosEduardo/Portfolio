@@ -13,30 +13,61 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://www.ceduardo.com.br";
+const TITULO = "Carlos Eduardo Alonso · Desenvolvedor e Automação com IA";
+const DESCRICAO =
+  "Carlos Eduardo Alonso, desenvolvedor em Goiânia. Automação de processos com IA, ferramentas internas em produção e produtos com Next.js, n8n e Playwright.";
+
 export const metadata: Metadata = {
-  title: "Carlos Eduardo · Full Stack Developer",
-  description:
-    "Desenvolvedor Full Stack em Goiânia/BR. Next.js, TypeScript e PostgreSQL. Construo produtos do banco de dados à interface.",
+  metadataBase: new URL(SITE_URL),
+  title: TITULO,
+  description: DESCRICAO,
   keywords: [
+    "Carlos Eduardo Alonso",
+    "Carlos Eduardo desenvolvedor",
+    "automação com ia",
+    "automação de processos",
+    "ai builder",
+    "n8n",
+    "playwright",
     "desenvolvedor full stack",
-    "desenvolvedor full stack junior",
     "desenvolvedor junior",
-    "desenvolvedor web junior",
     "desenvolvedor web",
     "next.js",
     "typescript",
-    "postgresql",
     "goiânia",
   ],
-  authors: [{ name: "Carlos Eduardo" }],
+  authors: [{ name: "Carlos Eduardo Alonso", url: SITE_URL }],
+  creator: "Carlos Eduardo Alonso",
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
   openGraph: {
-    title: "Carlos Eduardo · Full Stack Developer",
-    description: "Next.js, TypeScript e PostgreSQL. Do suporte ao código.",
-    url: "https://cseduardo.com.br",
-    siteName: "cadu.dev",
+    title: TITULO,
+    description: DESCRICAO,
+    url: SITE_URL,
+    siteName: "Carlos Eduardo Alonso",
     locale: "pt_BR",
-    type: "website",
+    type: "profile",
   },
+  twitter: { card: "summary_large_image", title: TITULO, description: DESCRICAO },
+};
+
+// dados estruturados: ajuda o Google a ligar o nome ao site e aos perfis
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Carlos Eduardo Alonso",
+  alternateName: "Carlos Eduardo",
+  url: SITE_URL,
+  email: "mailto:cseduardoalonso@gmail.com",
+  jobTitle: "Analista de Suporte e Desenvolvimento",
+  worksFor: { "@type": "Organization", name: "ARX Administradora" },
+  address: { "@type": "PostalAddress", addressLocality: "Goiânia", addressRegion: "GO", addressCountry: "BR" },
+  knowsAbout: ["Automação de processos", "Inteligência artificial", "Next.js", "TypeScript", "n8n", "Playwright"],
+  sameAs: [
+    "https://www.linkedin.com/in/zcarloseduardo/",
+    "https://github.com/zCarlosEduardo",
+  ],
 };
 
 export default function RootLayout({
@@ -46,12 +77,16 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="pt"
+      lang="pt-BR"
       data-lt-installed="true"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth `}
     >
       <body className="min-h-full ">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
         <Footer />
       </body>

@@ -61,13 +61,28 @@ export default function Formacoes() {
     <div className="w-full">
       {/* Bloco Fixo Principal */}
       <div>
-        <div className="flex gap-2 justify-between border-y border-0 border-neutral-900 py-4">
+        <div className="flex flex-wrap gap-2 justify-between border-y border-0 border-neutral-900 py-4">
           <div className="">
             <span className="ml-3 truncate ">Ciência da Computação </span>
-            <i className="text-xs text-(--cor-secundaria)">(cursando)</i>
+            <i className="text-xs text-(--cor-secundaria)">
+              (Concluído – 2026)
+            </i>
           </div>
-          <span className="text-(--cor-secundaria) text-sm tracking-wide font-mono truncate">
+          <span className="ml-3 text-(--cor-secundaria) text-sm tracking-wide font-mono truncate">
             Descomplica Faculdade Digital
+          </span>
+        </div>
+        <div className="flex flex-wrap gap-2 justify-between border-b border-0 border-neutral-900 py-4">
+          <div className="">
+            <span className="ml-3">
+              Análise e Desenvolvimento de Sistemas (Tecnólogo){" "}
+            </span>
+            <i className="text-xs text-(--cor-secundaria)">
+              (previsão dez/2028)
+            </i>
+          </div>
+          <span className="ml-3 text-(--cor-secundaria) text-sm tracking-wide font-mono truncate">
+            Descomplica
           </span>
         </div>
         <div className="flex gap-2 justify-between border-b border-0 border-neutral-900 py-4">

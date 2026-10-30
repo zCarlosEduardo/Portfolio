@@ -2,6 +2,23 @@ type Nivel = "producao" | "estudando";
 
 const stack = [
   {
+    categoria: "IA e automação",
+    techs: [
+      { nome: "n8n", nivel: "producao" },
+      { nome: "Claude", nivel: "producao" },
+      { nome: "ChatGPT", nivel: "producao" },
+      { nome: "Claude Code", nivel: "producao" },
+      { nome: "Cursor", nivel: "producao" },
+      { nome: "Playwright", nivel: "producao" },
+      { nome: "Gemini", nivel: "estudando" },
+      { nome: "v0", nivel: "estudando" },
+      { nome: "Bolt", nivel: "estudando" },
+      { nome: "Lovable", nivel: "estudando" },
+      { nome: "Replit", nivel: "estudando" },
+      { nome: "Prompt engineering", nivel: "estudando" },
+    ],
+  },
+  {
     categoria: "Front-End",
     techs: [
       { nome: "TypeScript", nivel: "producao" },
@@ -49,12 +66,16 @@ export default function StackCard() {
       {stack.map((grupo) => (
         <div
           key={grupo.categoria}
-          className="border border-neutral-800 rounded-lg p-5 bg-neutral-900/50"
+          className={`border border-neutral-800 rounded-lg p-5 bg-neutral-900/50 ${grupo.techs.length > 6 ? "md:col-span-3" : ""}`}
         >
           <span className="text-xs uppercase ml-4 font-mono tracking-wide text-(--cor-secundaria)">
             {grupo.categoria}
           </span>
-          <div>
+          <div
+            className={
+              grupo.techs.length > 6 ? "grid sm:grid-cols-2 md:grid-cols-3 gap-x-6" : ""
+            }
+          >
             {grupo.techs.map((tech) => (
               <div
                 key={tech.nome}

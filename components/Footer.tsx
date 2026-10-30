@@ -11,13 +11,13 @@ const link: LinkItem[] = [
   },
   {
     descricao: "linkedin",
-    href: "https://www.linkedin.com/in/carlos-eduardo-alonso-3a1462292/",
+    href: "https://www.linkedin.com/in/zcarloseduardo/",
     corHover:
       "hover:text-blue-400 hover:border-blue-700/50 hover:shadow-md shadow-blue-700/20",
   },
   {
     descricao: "email",
-    href: "mailto:contato.cseduardo@gmail.com",
+    href: "mailto:cseduardoalonso@gmail.com",
     corHover:
       "hover:text-red-400 hover:border-orange-700/50 hover:shadow-md shadow-red-700/20",
   },

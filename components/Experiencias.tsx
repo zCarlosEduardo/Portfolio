@@ -3,14 +3,32 @@
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
-const experiencias = [
+type Experiencia = {
+  label: string;
+  cargo: string;
+  empresa: string;
+  local: string;
+  periodo?: string;
+  descricao: string;
+  bullets?: string[];
+};
+
+const experiencias: Experiencia[] = [
   {
     label: "atual",
-    cargo: "Auxiliar Administrativo",
+    cargo: "Analista de Suporte e Desenvolvimento",
     empresa: "ARX Administradora",
     local: "Goiânia",
+    periodo: "mai/2025 – atual",
     descricao:
-      "Implantação e configuração de sistemas de gestão. Foi aqui que entendi como o usuário real usa (e quebra) software e comecei a automatizar e desenvolver por conta própria até virar função oficial.",
+      "Comecei automatizando tarefas do time por conta própria. Virou função oficial.",
+    bullets: [
+      "Hub de automações integrado à API do GLPI: identifica chamados com automação pronta e executa o fluxo sozinho. 1min53s por chamado, mais de 13h de trabalho manual economizadas, zero execuções manuais.",
+      "Sistema interno de gamificação em Next.js, em produção.",
+      "Deploy com Docker em servidores Linux.",
+      "Dashboards no Power BI.",
+      "Implantação de CRMs e ERP.",
+    ],
   },
   {
     label: "anterior",
@@ -90,6 +108,7 @@ export default function Experiencias() {
               {/* Empresa · local */}
               <span className="block font-mono text-sm text-(--cor-secundaria) mt-1">
                 {item.empresa} · {item.local}
+                {item.periodo && ` · ${item.periodo}`}
               </span>
 
               {/* Descrição expansível — mesmo truque dos certificados */}
@@ -104,6 +123,13 @@ export default function Experiencias() {
                   <p className="text-sm text-neutral-300 leading-relaxed">
                     {item.descricao}
                   </p>
+                  {item.bullets && (
+                    <ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-neutral-400 leading-relaxed">
+                      {item.bullets.map((b) => (
+                        <li key={b}>{b}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             </button>
