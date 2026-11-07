@@ -173,41 +173,17 @@ export default function Projetos() {
         categoria="Automação · API do GLPI"
         nome="Hub de Automações GLPI"
         selo="Ferramenta interna · código privado"
-        contexto={
-          <>
-            <strong className="text-neutral-200">
-              Hub que executa sozinho as tarefas repetitivas do suporte:
-            </strong>{" "}
-            a equipe da ARX gastava tempo executando à mão pedidos que chegavam
-            por chamado no GLPI. Hoje o hub resolve esses casos sem ninguém
-            encostar.
-          </>
-        }
-        desafio={
-          <>
-            Identificar automaticamente quais chamados já tinham automação
-            pronta e executá-las sem intervenção humana.
-          </>
-        }
-        decisao={
-          <>
-            Hub integrado à{" "}
-            <strong className="text-neutral-200">API do GLPI</strong>: valida o
-            chamado, verifica se existe automação criada pela equipe para aquele
-            caso e executa o fluxo automaticamente. Uma{" "}
-            <strong className="text-neutral-200">IA local</strong> confere o
-            tipo do chamado antes da execução.
-          </>
-        }
+        contexto="A equipe da ARX executava à mão pedidos que chegavam por chamado no GLPI. O hub assumiu essas tarefas repetitivas e resolve os chamados sem ninguém encostar."
+        desafio="Descobrir quais chamados já tinham automação pronta e executar cada uma sem intervenção humana."
+        decisao="Integrei o hub à API do GLPI. Ele valida o chamado, procura uma automação criada pela equipe para aquele caso e executa o fluxo. Antes da execução, uma IA local confere o tipo do chamado."
         resultado={
           <>
-            Em produção.{" "}
-            <strong className="text-neutral-200">1min53s</strong> de tempo
-            médio por chamado,{" "}
+            Em produção, com média de{" "}
+            <strong className="text-neutral-200">1min53s</strong> por chamado e{" "}
             <strong className="text-neutral-200">
               mais de 13h de trabalho manual
             </strong>{" "}
-            economizadas e zero execuções manuais.
+            economizadas. Nenhuma execução é feita à mão.
           </>
         }
         stack={[
@@ -238,41 +214,10 @@ export default function Projetos() {
           href: "https://github.com/zCarlosEduardo/sistema-gamificacao",
           label: "ver no github",
         }}
-        contexto={
-          <>
-            <strong className="text-neutral-200">
-              SaaS multitenant de gamificação corporativa:
-            </strong>{" "}
-            metas diárias por colaborador, roleta de moedas, marketplace de
-            pontos e leaderboard. Várias empresas na mesma base, com isolamento
-            total de dados entre elas.
-          </>
-        }
-        desafio={
-          <>
-            Multitenancy seguro (um tenant jamais pode ver dados de outro) e
-            atualizações em tempo real no leaderboard sem estourar custo.
-          </>
-        }
-        decisao={
-          <>
-            Reescrever a v2 do zero com{" "}
-            <strong className="text-neutral-200">Drizzle</strong>, garantindo o
-            isolamento na camada de dados antes de qualquer UI.{" "}
-            <strong className="text-neutral-200">
-              Realtime com SSE + Redis pub/sub
-            </strong>{" "}
-            em vez de WebSocket, e API em NestJS com validação Zod.
-          </>
-        }
-        resultado={
-          <>
-            Arquitetura mais simples que a v1, com um{" "}
-            <strong className="text-neutral-200">documento de handoff</strong>{" "}
-            registrando cada decisão — saber quando recomeçar também é
-            engenharia.
-          </>
-        }
+        contexto="SaaS multitenant de gamificação corporativa, com metas diárias por colaborador, roleta de moedas, marketplace de pontos e leaderboard. Várias empresas dividem a mesma base, com os dados isolados entre elas."
+        desafio="Garantir que um tenant nunca veja dados de outro e atualizar o leaderboard em tempo real sem estourar o custo."
+        decisao="Reescrevi a v2 do zero com Drizzle e resolvi o isolamento na camada de dados antes de qualquer tela. O tempo real usa SSE e Redis pub/sub em vez de WebSocket, e a API é em NestJS com validação Zod."
+        resultado="A arquitetura ficou mais simples que a da v1, e um documento de handoff registra cada decisão."
         stack={[
           "Next.js",
           "NestJS",
@@ -298,37 +243,10 @@ export default function Projetos() {
         categoria="App mobile · Expo + React Native"
         nome="Nozes"
         selo="Em desenvolvimento · código privado"
-        contexto={
-          <>
-            <strong className="text-neutral-200">
-              App de casal para organizar a rotina a dois:
-            </strong>{" "}
-            listas com prazo, tarefas, calendário de datas importantes e cor
-            própria para cada pessoa. Uma base só para iOS, Android e web.
-          </>
-        }
-        desafio={
-          <>
-            Construir as telas antes do backend existir, sem retrabalho quando a
-            API real chegar.
-          </>
-        }
-        decisao={
-          <>
-            Camadas por feature (domain, data, presentation). A UI depende só
-            da <strong className="text-neutral-200">interface do repositório</strong>;
-            hoje um banco falso em memória cumpre o contrato.{" "}
-            <strong className="text-neutral-200">TanStack Query</strong> nos
-            dados e NativeWind no tema.
-          </>
-        }
-        resultado={
-          <>
-            Trocar o mock pela API não toca nenhuma tela. Regras de negócio
-            puras com smoke tests executáveis e tema{" "}
-            <strong className="text-neutral-200">claro, escuro e preto</strong>.
-          </>
-        }
+        contexto="App para o casal organizar a rotina: listas com prazo, tarefas, calendário de datas importantes e uma cor para cada pessoa. A mesma base roda em iOS, Android e web."
+        desafio="Construir as telas antes do backend existir, sem retrabalho quando a API real chegar."
+        decisao="Separei cada feature em camadas (domain, data, presentation). As telas dependem só da interface do repositório, e hoje um banco falso em memória cumpre esse contrato. Os dados passam pelo TanStack Query e o tema usa NativeWind."
+        resultado="Trocar o mock pela API não vai mexer em nenhuma tela. As regras de negócio são puras e têm smoke tests executáveis, e o app tem tema claro, escuro e preto."
         stack={[
           "Expo",
           "React Native",
@@ -353,38 +271,10 @@ export default function Projetos() {
         categoria="Ferramenta interna · Next.js + Prisma"
         nome="Sys Coin v1"
         selo="Ferramenta interna · código privado"
-        contexto={
-          <>
-            <strong className="text-neutral-200">
-              Sistema de recompensas interno da ARX:
-            </strong>{" "}
-            gestores lançam metas e coins por funcionário, coins viram pontos e
-            pontos viram produtos. Onze departamentos, ranking, catálogo e
-            dashboard.
-          </>
-        }
-        desafio={
-          <>
-            Toda mudança de saldo precisava ser rastreável: quem lançou, quanto,
-            com qual multiplicador e o que foi resgatado, sem apagar histórico.
-          </>
-        }
-        decisao={
-          <>
-            <strong className="text-neutral-200">Server Actions</strong> com
-            Prisma e PostgreSQL. Cada ajuste gera um log com o multiplicador
-            usado, e resgate e débito de coins rodam na{" "}
-            <strong className="text-neutral-200">mesma transação</strong>.
-            Exclusão lógica em funcionários e produtos.
-          </>
-        }
-        resultado={
-          <>
-            Em produção na empresa, com deploy em Docker. Relatórios por
-            departamento em Excel e gráficos de coins, pontos e metas. Serviu de
-            base para o <strong className="text-neutral-200">Await</strong>.
-          </>
-        }
+        contexto="Sistema de recompensas interno da ARX. Gestores lançam metas e coins por funcionário, coins viram pontos e pontos viram produtos. Cobre onze departamentos, com ranking, catálogo e dashboard."
+        desafio="Toda mudança de saldo precisava ser rastreável: quem lançou, quanto, com qual multiplicador e o que foi resgatado, sem apagar histórico."
+        decisao="Usei Server Actions com Prisma e PostgreSQL. Cada ajuste gera um log com o multiplicador usado, e o resgate e o débito de coins rodam na mesma transação. Funcionários e produtos têm exclusão lógica."
+        resultado="Em produção na empresa, com deploy em Docker. Gera relatórios por departamento em Excel e gráficos de coins, pontos e metas. Serviu de base para o Await."
         stack={[
           "Next.js",
           "TypeScript",

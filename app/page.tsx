@@ -25,7 +25,7 @@ const outrosTrabalhos = [
   {
     titulo: "Bot de atendimento no WhatsApp",
     texto:
-      "Fluxos de atendimento automatizado com n8n, webhooks e integração via API, do desenho do fluxo ao funcionamento.",
+      "Atendimento automatizado com n8n e webhooks, integrado por API. Desenhei os fluxos e coloquei para funcionar.",
   },
   {
     titulo: "Dashboards no Power BI",
@@ -73,7 +73,8 @@ export default function Home() {
             <span className="text-(--cor-primaria)">
               Automatizo processos com IA e coloco em produção.
             </span>{" "}
-            Ferramentas internas, integrações e bots que economizam horas reais.
+            Faço ferramentas internas, integrações e bots que tiram trabalho
+            manual da equipe.
           </p>
           <div className="flex flex-wrap gap-3 md:gap-6">
             <Button href="#projetos">Ver projetos</Button>
@@ -104,9 +105,9 @@ export default function Home() {
         {/* Projetos */}
         <section id="projetos" className="scroll-mt-24">
           <TituloSections
-            titulo="Produto real, com decisão técnica."
+            titulo="O que eu construí"
             subtitulo="Projetos"
-            paragrafo="Cada projeto resolveu um problema real: automação em produção, ferramenta interna ou produto com usuário. O formato é o mesmo que uso no trabalho: contexto, desafio, decisão, resultado."
+            paragrafo="Automações, ferramentas internas e produtos próprios. Em cada um, conto o contexto, o desafio, a decisão técnica e o resultado."
           />
           <Projetos />
 
@@ -148,7 +149,7 @@ export default function Home() {
             subtitulo="Sobre mim"
             paragrafo={`Comecei em TI pelo suporte. Atendendo chamado em rede de supermercado, aprendi a transformar "o sistema não funciona" em problema técnico. Depois vieram infraestrutura, implantação de sistemas e as primeiras linhas de código.
 
-Hoje desenvolvo ferramentas internas, integrações e produtos próprios com Next.js, n8n, Playwright e IA. Quem já esteve do lado do suporte sabe onde o trabalho repetitivo dói, e meu foco é tirar esse trabalho das mãos das pessoas.`}
+Hoje desenvolvo ferramentas internas, integrações e produtos próprios com Next.js, n8n, Playwright e IA. Como passei pelo suporte, sei onde o trabalho repetitivo pesa, e é esse trabalho que procuro automatizar.`}
           />
           <dl className="grid grid-cols-2 gap-4 self-end">
             {numeros.map((n) => (
@@ -173,7 +174,7 @@ Hoje desenvolvo ferramentas internas, integrações e produtos próprios com Nex
           <TituloSections
             titulo="Onde trabalhei"
             subtitulo="Experiência"
-            paragrafo="Comecei no suporte, ouvindo o problema real do usuário. Migrei para desenvolvimento e hoje automatizo processos. Enxergo o sistema pelos dois lados: de quem usa e de quem constrói."
+            paragrafo="Três empresas, do atendimento às lojas de um supermercado ao desenvolvimento de ferramentas internas."
           />
           <Experiencias />
           <h3 className="mb-4 text-xl md:text-2xl font-semibold">Formação</h3>
@@ -189,11 +190,11 @@ Hoje desenvolvo ferramentas internas, integrações e produtos próprios com Nex
             Contato
           </span>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight max-w-2xl">
-            Vamos construir algo juntos?
+            Vamos conversar?
           </h2>
           <p className="py-6 max-w-lg text-base md:text-lg text-(--cor-secundaria)">
-            Respondo rápido e converso de forma direta. Na entrevista, mostro
-            ferramentas em produção, não slides.
+            Respondo rápido. Numa entrevista, posso mostrar as ferramentas
+            funcionando.
           </p>
           <div className="flex flex-wrap justify-center gap-3 md:gap-6">
             <Button href="https://wa.me/5562983263038">Mandar mensagem</Button>

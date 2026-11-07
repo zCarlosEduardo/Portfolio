@@ -70,7 +70,7 @@ export default function Formacoes() {
           <div className="">
             <span className=" truncate ">Ciência da Computação </span>
             <i className="text-[13px] text-(--cor-secundaria)">
-              (Concluído – 2026)
+              (concluído em 2026)
             </i>
           </div>
           <span className=" text-(--cor-secundaria) text-sm tracking-wide font-mono truncate">
